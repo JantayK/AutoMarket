@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.DAL.Enums
 {
-    class FuelType
+    public enum FuelType
     {
+        Бензин = 1,
+        Дизель = 2,
+        Газ = 3
     }
 }

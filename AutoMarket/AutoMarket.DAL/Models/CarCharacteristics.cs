@@ -12,8 +12,8 @@ namespace AutoMarket.DAL.Models
     {
         public int Id { get; set; }
 
-        [ForeignKey("Model")]
-        public int ModelId { get; set; }
+        [ForeignKey("Generation")]
+        public int GenerationId { get; set; }
         public int EnginePower { get; set; }
         public int Torque { get; set; }
         public int Cylinders { get; set; }
@@ -26,6 +26,6 @@ namespace AutoMarket.DAL.Models
         public int Clearance { get; set; }
         public int Weight { get; set; }
         public int FuelTankCapacity { get; set; }
-        public virtual Model Model { get; set; }
+        public virtual Generation Generation { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace AutoMarket.DAL.Models
         [ForeignKey("Model")]
         public int ModelId { get; set; }
         public string BodyName { get; set; }
-        public int GenerationNumbet { get; set; }
+        public int GenerationNumber { get; set; }
         public int StartYear { get; set; }
         public int EndYear { get; set; }
         public bool Restyling { get; set; }

@@ -13,6 +13,7 @@ namespace AutoMarket.Data
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Model> Models { get; set; }
+        public DbSet<Generation> Generations { get; set; }
         public DbSet<CarCharacteristics> CarCharacteristics { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
@@ -30,6 +31,7 @@ namespace AutoMarket.Data
             var user = builder.Entity<User>();
             var brand = builder.Entity<Brand>();
             var model = builder.Entity<Model>();
+            var generation = builder.Entity<Generation>();
             var carCharacteristics = builder.Entity<CarCharacteristics>();
             var comment = builder.Entity<Comment>();
 
@@ -52,7 +54,6 @@ namespace AutoMarket.Data
 
             model.Property(x => x.Name).IsRequired();
 
-
             carCharacteristics.Property(x => x.AccelerationTime).IsRequired();
             carCharacteristics.Property(x => x.AverageFuelConsumption).IsRequired();
             carCharacteristics.Property(x => x.Clearance).IsRequired();
@@ -73,6 +74,9 @@ namespace AutoMarket.Data
 
             user.HasIndex(x => x.Email).IsUnique();
             user.HasIndex(x => x.PhoneNumber).IsUnique();
+
+            generation.HasIndex(x => x.BodyName).IsUnique();
+            generation.Property(x => x.BodyName).IsRequired();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AutoMarket.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +18,8 @@ namespace AutoMarket.DAL.Models
         public int Torque { get; set; }
         public int Cylinders { get; set; }
         public int MaxSpeed { get; set; }
-        public decimal AccelerationTime { get; set; }
-        public decimal AverageFuelConsumption { get; set; }
+        public double AccelerationTime { get; set; }
+        public double AverageFuelConsumption { get; set; }
         public int Length { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }

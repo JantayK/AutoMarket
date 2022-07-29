@@ -38,5 +38,6 @@ namespace AutoMarket.DAL.Models
         public virtual Brand Brand { get; set; }
         public virtual Model Model { get; set; }
         public virtual User User { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

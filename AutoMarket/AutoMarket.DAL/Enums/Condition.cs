@@ -8,10 +8,10 @@ namespace AutoMarket.DAL.Enums
 {
     public enum Condition
     {
-        Аварийное = 1,
-        Среднее = 2,
-        Хорошее = 3,
-        Идеальное = 4,
-        Новое = 5
+        Emergency = 1,
+        Medium = 2,
+        Good = 3,
+        Ideal = 4,
+        New = 5
     }
 }

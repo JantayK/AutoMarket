@@ -8,17 +8,17 @@ namespace AutoMarket.DAL.Enums
 {
     public enum BodyType
     {
-        Седан = 1,
-        Лифтбек = 2,
-        Внедорожник = 3,
-        Купе = 4,
-        Кроссовер = 5,
-        Лимузин = 6,
-        Кабриолет = 7,
-        Хэтчбек = 8,
-        Универсал = 9,
-        Пикап = 10,
-        Фургон = 11,
-        Минивэн = 12
+        Sedan = 1,
+        Liftback = 2,
+        SUV = 3,
+        Coupe = 4,
+        Crossover = 5,
+        Limousine = 6,
+        Cabriolet = 7,
+        Hatchback = 8,
+        Universal = 9,
+        Pickup = 10,
+        Van = 11,
+        Minivan = 12
     }
 }

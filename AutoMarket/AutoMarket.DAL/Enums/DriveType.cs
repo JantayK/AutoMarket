@@ -8,8 +8,8 @@ namespace AutoMarket.DAL.Enums
 {
     public enum DriveType
     {
-        Передний = 1,
-        Задний = 2,
-        Полный = 3
+        Forward = 1,
+        Rear = 2,
+        All = 3
     }
 }

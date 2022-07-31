@@ -8,19 +8,19 @@ namespace AutoMarket.DAL.Enums
 {
     public enum Color
     {
-        Белый = 1,
-        Чёрный = 2,
-        Серый = 3,
-        Синий = 4,
-        Красный = 5,
-        Желтый = 6,
-        Зеленый = 7,
-        Голубой = 8,
-        МокрыйАсфальт = 9,
-        Оранжевый = 10,
-        Песочный = 11,
-        Кориченевый = 12,
-        Розовый = 13,
-        Фиолетовый = 14
+        White = 1,
+        Black = 2,
+        Gray = 3,
+        Blue = 4,
+        Red = 5,
+        Yellow = 6,
+        Green = 7,
+        Cyan = 8,
+        WetAsphalt = 9,
+        Orange = 10,
+        Sand = 11,
+        Brown = 12,
+        Pink = 13,
+        Violet = 14
     }
 }

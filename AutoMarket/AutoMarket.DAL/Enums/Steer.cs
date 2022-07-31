@@ -8,7 +8,7 @@ namespace AutoMarket.DAL.Enums
 {
     public enum Steer
     {
-        Правый = 1,
-        Левый = 2
+        Right = 1,
+        Left = 2
     }
 }

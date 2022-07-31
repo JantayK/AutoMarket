@@ -8,8 +8,8 @@ namespace AutoMarket.DAL.Enums
 {
     public enum FuelType
     {
-        Бензин = 1,
-        Дизель = 2,
-        Газ = 3
+        Gasoline = 1,
+        Diesel = 2,
+        Gas = 3
     }
 }

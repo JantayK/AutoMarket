@@ -21,5 +21,6 @@ namespace AutoMarket.DAL.Models
         public bool Restyling { get; set; }
 
         public virtual Model Model { get; set; }
+        public ICollection<CarCharacteristics> CarCharacteristics { get; set; }
     }
 }

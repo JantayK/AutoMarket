@@ -14,6 +14,7 @@ namespace AutoMarket.DAL.Models
 
         [ForeignKey("Generation")]
         public int GenerationId { get; set; }
+        public int EngineVolume { get; set; }
         public int EnginePower { get; set; }
         public int Torque { get; set; }
         public int Cylinders { get; set; }

@@ -14,6 +14,11 @@ namespace AutoMarket.WEB.ViewModels.CarCharacteristics
         [ForeignKey("Model")]
         public int ModelId { get; set; }
 
+        [Display(Name = "Объем двигателя (см³)")]
+        [Required(ErrorMessage = "Обязательное поле")]
+        [StringLength(6, MinimumLength = 3, ErrorMessage = "Некорректный ввод")]
+        public int EngineVolume { get; set; }
+
         [Display(Name = "Мощность двигателя (л.с)")]
         [Required(ErrorMessage = "Обязательное поле")]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Некорректный ввод")]

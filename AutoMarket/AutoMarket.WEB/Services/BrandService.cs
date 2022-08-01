@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public class BrandService : IBrandService
     {
-        public void Create(Brand brand)
+        public async Task<Brand> CreateAsync(Brand brand)
         {
             throw new NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace AutoMarket.BLL.Services
             throw new NotImplementedException();
         }
 
-        public List<Brand> GetAll()
+        public async Task<List<Brand>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Brand GetByName(string name)
+        public async Task<Brand> GetByNameAsync(string name)
         {
             throw new NotImplementedException();
         }

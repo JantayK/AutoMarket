@@ -9,10 +9,10 @@ namespace AutoMarket.BLL.Services
 {
     public interface IModelService
     {
-        public void Create(Model model);
+        public Task<Model> CreateAsync(Model model);
         public void Edit(Model model);
         public void Delete(Model model);
-        public List<Model> GetAll();
-        public Model GetByName(string name);
+        public Task<List<Model>> GetAllAsync();
+        public Task<Model> GetByNameAsync(string name);
     }
 }

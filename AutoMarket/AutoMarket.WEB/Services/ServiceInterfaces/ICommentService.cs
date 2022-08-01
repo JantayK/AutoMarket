@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public interface ICommentService
     {
-        public void Create(Comment comment);
+        public Task<Comment> CreateAsync(Comment comment);
         public void Delete(Comment comment);
     }
 }

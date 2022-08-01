@@ -9,10 +9,10 @@ namespace AutoMarket.BLL.Services
 {
     public interface IGenerationService
     {
-        public void Create(Generation generation);
+        public Task<Generation> CreateAsync(Generation generation);
         public void Edit(Generation generation);
         public void Delete(Generation generation);
-        public List<Generation> GetAll();
-        public Generation GetByBodyName();
+        public Task<List<Generation>> GetAllAsync();
+        public Task<Generation> GetByBodyNameAsync();
     }
 }

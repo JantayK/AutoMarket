@@ -1,3 +1,5 @@
+using AutoMarket.BLL.Services;
+using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using AutoMarket.Data;
 using Microsoft.AspNetCore.Builder;
@@ -27,9 +29,30 @@ namespace AutoMarket
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<User>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.User.AllowedUserNameCharacters = ".@qwertyuiopasdfghjklzxcvbnm" +
+                                                         "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddScoped<UnitOfWork>();
+
+
+            services.AddTransient<IAdvertService, AdvertService>();
+            services.AddTransient<IBrandService, BrandService>();
+            services.AddTransient<IModelService, ModelService>();
+            services.AddTransient<IGenerationService, GeneretionService>();
+            services.AddTransient<ICarCharacteristicsService, CarCharacteristicsService>();
+            services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

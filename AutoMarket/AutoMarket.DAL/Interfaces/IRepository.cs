@@ -15,9 +15,9 @@ namespace AutoMarket.DAL.Interfaces
         {
             Task<T> CreateAsync(T model);
             Task<T> GetByIdAsync(int id);
-            Task<List<T>> GetAsync();
+            Task<List<T>> GetAsync(Func<T, bool> predicate = null);
             void Delete(T model);
-            void EditAsync(T model);
+            void Edit(T model);
             Task SaveAsync();
         }
 }

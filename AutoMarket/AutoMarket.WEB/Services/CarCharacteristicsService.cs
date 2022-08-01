@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public class CarCharacteristicsService : ICarCharacteristicsService
     {
-        public void Create(CarCharacteristics carCharacteristics)
+        public async Task<CarCharacteristics> CreateAsync(CarCharacteristics carCharacteristics)
         {
             throw new NotImplementedException();
         }

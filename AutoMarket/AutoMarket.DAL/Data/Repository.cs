@@ -43,7 +43,7 @@ namespace AutoMarket.DAL.Data
             }
         }
 
-        public void EditAsync(T model)
+        public void Edit(T model)
         {
             if (_set.Any(x => x.Id == model.Id))
             {
@@ -51,9 +51,13 @@ namespace AutoMarket.DAL.Data
             }
         }
 
-        public async Task<List<T>> GetAsync()
+        public async Task<List<T>> GetAsync(Func<T, bool> predicate = null)
         {
             var items = _set.AsQueryable();
+            if(predicate != null)
+            {
+                items = items.Where(predicate).AsQueryable();
+            }
             return await items.ToListAsync();
         }
 

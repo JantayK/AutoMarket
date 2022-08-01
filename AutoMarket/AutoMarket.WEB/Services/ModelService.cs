@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public class ModelService : IModelService
     {
-        public void Create(Model model)
+        public async Task<Model> CreateAsync(Model model)
         {
             throw new NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace AutoMarket.BLL.Services
             throw new NotImplementedException();
         }
 
-        public List<Model> GetAll()
+        public async Task<List<Model>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Model GetByName(string name)
+        public async Task<Model> GetByNameAsync(string name)
         {
             throw new NotImplementedException();
         }

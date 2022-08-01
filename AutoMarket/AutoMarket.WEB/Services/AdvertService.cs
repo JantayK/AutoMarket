@@ -1,4 +1,6 @@
-﻿using AutoMarket.DAL.Models;
+﻿using AutoMarket.DAL.Data;
+using AutoMarket.DAL.Enums;
+using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,71 +9,110 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Объявлений 
+    /// </summary>
     public class AdvertService : IAdvertService
     {
-        public void Create(Advert advert)
+        private readonly UnitOfWork _uow;
+        public AdvertService(UnitOfWork uow)
         {
-            throw new NotImplementedException();
+            _uow = uow;
+        }
+        public async Task<Advert> CreateAsync(Advert advert)
+        {
+            var ad = await _uow.AdvertRepository.CreateAsync(advert);
+            await _uow.AdvertRepository.SaveAsync();
+            return ad;
         }
 
         public void Delete(Advert advert)
         {
-            throw new NotImplementedException();
+            if(advert != null)
+            {
+                _uow.AdvertRepository.Delete(advert);
+                _uow.Save();
+            }
         }
 
         public void Edit(Advert advert)
         {
-            throw new NotImplementedException();
+            _uow.AdvertRepository.Edit(advert);
+            _uow.Save();
         }
 
-        public List<Advert> GetAll()
+        public async Task<List<Advert>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var ad = await _uow.AdvertRepository.GetAsync();
+            return ad;
         }
 
-        public List<Advert> GetByBrand(string Name)
+        public async Task<List<Advert>> GetByBrandAsync(string name)
         {
-            throw new NotImplementedException();
+            if(name != null)
+            {
+                var list = await _uow.AdvertRepository.GetAsync();
+                var filterredList = list.Where(x => x.Brand.Name == name).ToList();
+                return filterredList;
+            }
+            throw new ArgumentNullException("This field can't be empty!");
         }
 
-        public List<Advert> GetByColor(string color)
+        public async Task<List<Advert>> GetByColorAsync(Color color)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Color == color).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByCondition(string condition)
+        public async Task<List<Advert>> GetByConditionAsync(Condition condition)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Condition == condition).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByEngineVolume(double engineVolFrom, double till)
+        public async Task<List<Advert>> GetByEngineVolumeAsync(double engineVolFrom, double till)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.EngineVolume >= engineVolFrom && x.EngineVolume <= till).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByGearBox(string type)
+        public async Task<List<Advert>> GetByGearBoxAsync(GearBox type)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.GearBox == type).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByGeneration(int Id)
+        public async Task<List<Advert>> GetByGenerationAsync(int modelId, int generationId)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var generation = await _uow.GenerationRepository.GetByIdAsync(generationId);
+            var filterredList = list.Where(x => x.Id == generation.Model.Advert.Id).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByModel(string Name)
+        public async Task<List<Advert>> GetByModelAsync(string name)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Model.Name == name).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByPrice(decimal priceFrom, int till)
+        public async Task<List<Advert>> GetByPriceAsync(decimal priceFrom, int till)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Price >= priceFrom && x.Price <= till).ToList();
+            return filterredList;
         }
 
-        public List<Advert> GetByYear(int yearFrom, int till)
+        public async Task<List<Advert>> GetByYearAsync(int yearFrom, int till)
         {
-            throw new NotImplementedException();
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.ManufacturerYear >= yearFrom && x.ManufacturerYear <= till).ToList();
+            return filterredList;
         }
     }
 }

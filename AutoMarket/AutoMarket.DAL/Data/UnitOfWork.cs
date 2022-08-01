@@ -18,6 +18,7 @@ namespace AutoMarket.DAL.Data
         private Repository<Brand> _brandRepository;
         private Repository<Model> _modelRepository;
         private Repository<CarCharacteristics> _carCharacteristicsRepository;
+        private Repository<Generation> _generationRepository;
         private Repository<Comment> _commentRepository;
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -60,6 +61,15 @@ namespace AutoMarket.DAL.Data
                 return _carCharacteristicsRepository;
             }
         }
+        public Repository<Generation> GenerationRepository
+        {
+            get
+            {
+                if (_generationRepository == null)
+                    _generationRepository = new Repository<Generation>(_context);
+                return _generationRepository;
+            }
+        }
         public Repository<Comment> CommentRepository
         {
             get
@@ -93,6 +103,5 @@ namespace AutoMarket.DAL.Data
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }  
 }

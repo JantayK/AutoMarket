@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public class GeneretionService : IGenerationService
     {
-        public void Create(Generation generation)
+        public async Task<Generation> CreateAsync(Generation generation)
         {
             throw new NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace AutoMarket.BLL.Services
             throw new NotImplementedException();
         }
 
-        public List<Generation> GetAll()
+        public async Task<List<Generation>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Generation GetByBodyName()
+        public async Task<Generation> GetByBodyNameAsync()
         {
             throw new NotImplementedException();
         }

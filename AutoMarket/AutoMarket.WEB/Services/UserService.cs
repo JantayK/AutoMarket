@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
-    public class CommentService : ICommentService
+    public class UserService : IUserService
     {
-        public async Task<Comment> CreateAsync(Comment comment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Comment comment)
+        public void EditPersonalData(User user)
         {
             throw new NotImplementedException();
         }

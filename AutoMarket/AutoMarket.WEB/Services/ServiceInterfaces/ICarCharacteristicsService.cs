@@ -9,7 +9,7 @@ namespace AutoMarket.BLL.Services
 {
     public interface ICarCharacteristicsService
     {
-        public void Create(CarCharacteristics carCharacteristics);
+        public Task<CarCharacteristics> CreateAsync(CarCharacteristics carCharacteristics);
         public void Edit(CarCharacteristics carCharacteristics);
         public void Delete(CarCharacteristics carCharacteristics);
     }

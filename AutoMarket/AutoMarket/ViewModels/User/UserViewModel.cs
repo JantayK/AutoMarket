@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMarket.WEB.ViewModels.Advert;
+using AutoMarket.WEB.ViewModels.Comment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +11,7 @@ namespace AutoMarket.WEB.ViewModels.User
     {
         public string Id { get; set; }
         public string FirstName { get; set; }
+        public virtual CommentViewModel Comment { get; set; }
+        public virtual AdvertViewModel Advert { get; set; }
     }
 }

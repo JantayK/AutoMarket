@@ -21,6 +21,8 @@ namespace AutoMarket.WEB.ViewModels.Advert
 
         [ForeignKey("Model")]
         public int ModelId { get; set; }
+        [ForeignKey("Generation")]
+        public int GenerationId { get; set; }
 
         [Display(Name = "Год выпуска")]
         [Required(ErrorMessage = "Обязательное поле")]
@@ -28,7 +30,7 @@ namespace AutoMarket.WEB.ViewModels.Advert
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Некорректный ввод")]
         public int ManufacturerYear { get; set; }
 
-        [Display(Name = "Тип топливо")]
+        [Display(Name = "Тип топлива")]
         [Required(ErrorMessage = "Обязательное поле")]
         public FuelType FuelType { get; set; }
 
@@ -75,6 +77,7 @@ namespace AutoMarket.WEB.ViewModels.Advert
         public Decimal Price { get; set; }
         public virtual BrandViewModel Brand { get; set; }
         public virtual ModelViewModel Model { get; set; }
+        public virtual GenerationViewModel Generation { get; set; }
         public virtual UserViewModel User { get; set; }
     }
 }

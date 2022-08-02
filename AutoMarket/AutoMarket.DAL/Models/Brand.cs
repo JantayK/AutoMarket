@@ -12,6 +12,6 @@ namespace AutoMarket.DAL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Model> Models { get; set; }
-        public virtual Advert Advert { get; set; }
+        public ICollection<Advert> Adverts { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace AutoMarket.BLL.Services
         public Task<List<Advert>> GetAllAsync();
         public Task<List<Advert>> GetByBrandAsync(string name);
         public Task<List<Advert>> GetByModelAsync(string name);
-        public Task<List<Advert>> GetByGenerationAsync(int modelId, int generationId);
+        public Task<List<Advert>> GetByGenerationAsync(int generationId);
         public Task<List<Advert>> GetByYearAsync(int yearFrom, int till);
         public Task<List<Advert>> GetByPriceAsync(decimal priceFrom, int till);
         public Task<List<Advert>> GetByGearBoxAsync(GearBox type);

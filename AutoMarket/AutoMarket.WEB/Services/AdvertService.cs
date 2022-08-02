@@ -86,11 +86,10 @@ namespace AutoMarket.BLL.Services
             return filterredList;
         }
 
-        public async Task<List<Advert>> GetByGenerationAsync(int modelId, int generationId)
+        public async Task<List<Advert>> GetByGenerationAsync(int generationId)
         {
             var list = await _uow.AdvertRepository.GetAsync();
-            var generation = await _uow.GenerationRepository.GetByIdAsync(generationId);
-            var filterredList = list.Where(x => x.Id == generation.Model.Advert.Id).ToList();
+            var filterredList = list.Where(x => x.Generation.Id == generationId).ToList();
             return filterredList;
         }
 

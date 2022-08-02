@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMarket.WEB.ViewModels.Advert;
+using AutoMarket.WEB.ViewModels.CarCharacteristics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -40,5 +42,7 @@ namespace AutoMarket.WEB.ViewModels
         public bool Restyling { get; set; }
 
         public virtual ModelViewModel Model { get; set; }
+        public ICollection<CarCharacteristicsViewModel> CarCharacteristics { get; set; }
+        public ICollection<AdvertViewModel> Adverts { get; set; }
     }
 }

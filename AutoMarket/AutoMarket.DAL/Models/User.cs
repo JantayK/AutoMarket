@@ -10,5 +10,7 @@ namespace AutoMarket.DAL.Models
     public class User : IdentityUser
     {
         public string FirstName { get; set; }
+        public virtual Comment Comment { get; set; }
+        public virtual Advert Advert { get; set; }
     }
 }

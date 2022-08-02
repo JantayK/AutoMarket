@@ -22,6 +22,9 @@ namespace AutoMarket.DAL.Models
         [ForeignKey("Model")]
         public int ModelId { get; set; }
 
+        [ForeignKey("Generation")]
+        public int GenerationId { get; set; }
+
         public int ManufacturerYear { get; set; }
         public FuelType FuelType { get; set; }
         public BodyType BodyType { get; set; }
@@ -37,6 +40,7 @@ namespace AutoMarket.DAL.Models
         public Decimal Price { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Model Model { get; set; }
+        public virtual Generation Generation { get; set; }
         public virtual User User { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

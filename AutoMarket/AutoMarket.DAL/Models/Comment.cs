@@ -15,6 +15,8 @@ namespace AutoMarket.DAL.Models
 
         [ForeignKey("User")]
         public string UserId { get; set; }
+        [ForeignKey("Advert")]
+        public string AdvertId { get; set; }
 
         [StringLength(1000)]
         public string Text { get; set; }

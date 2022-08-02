@@ -8,6 +8,9 @@ namespace AutoMarket.WEB.ViewModels.User
 {
     public class UserChangePasswordViewModel
     {
+        [Required]
+        public string Id { get; set; }
+
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Обязательное поле")]
         [Display(Name = "Старый пароль")]

@@ -34,6 +34,9 @@ namespace AutoMarket.DAL.Data
                     });
 
             }
+            
+            context.SaveChanges();
+
             if (!context.Models.Any())
             {
                 context.Models.AddRange(
@@ -98,6 +101,9 @@ namespace AutoMarket.DAL.Data
                         BrandId = context.Brands.FirstOrDefault(b => b.Name == "Toyota").Id
                     });
             }
+            
+            context.SaveChanges();
+
             if (!context.Generations.Any())
             {
                 context.Generations.AddRange(
@@ -701,16 +707,7 @@ namespace AutoMarket.DAL.Data
                         StartYear = 2020,
                         EndYear = 2022,
                         GenerationNumber = 5,
-                        Restyling = false,
-                        ModelId = context.Models.FirstOrDefault(b => b.Name == "Camry").Id
-                    },
-                    new Generation()
-                    {
-                        BodyName = "XV70",
-                        StartYear = 2020,
-                        EndYear = 2022,
-                        GenerationNumber = 5,
-                        Restyling = false,
+                        Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "Camry").Id
                     },
                     new Generation()
@@ -957,6 +954,10 @@ namespace AutoMarket.DAL.Data
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "X7").Id
                     });
             }
+
+            context.SaveChanges();
+
+
             if (!context.CarCharacteristics.Any())
             {
                 context.CarCharacteristics.AddRange(
@@ -3647,6 +3648,8 @@ namespace AutoMarket.DAL.Data
                         GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G05").Id
                     });
             }
+            
+            context.SaveChanges();
         }
     }
 }

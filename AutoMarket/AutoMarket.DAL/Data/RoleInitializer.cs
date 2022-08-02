@@ -19,9 +19,9 @@ namespace AutoMarket.DAL.Data
             {
                 await roleManager.CreateAsync(new IdentityRole("user"));
             }
-            if(await userManager.FindByNameAsync(adminEmail) == null)
+            if (await userManager.FindByNameAsync(adminEmail) == null)
             {
-                User admin = new User()
+                User admin = new User
                 {
                     Email = adminEmail,
                     UserName = adminEmail,
@@ -30,7 +30,7 @@ namespace AutoMarket.DAL.Data
 
                 var result = await userManager.CreateAsync(admin, password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, "admin");
                 }

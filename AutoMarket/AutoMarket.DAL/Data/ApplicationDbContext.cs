@@ -75,7 +75,6 @@ namespace AutoMarket.Data
             user.HasIndex(x => x.Email).IsUnique();
             user.HasIndex(x => x.PhoneNumber).IsUnique();
 
-            generation.HasIndex(x => x.BodyName).IsUnique();
             generation.Property(x => x.BodyName).IsRequired();
         }
     }

@@ -13,6 +13,6 @@ namespace AutoMarket.DAL.Models
         public string Name { get; set; }
         public virtual Brand Brand { get; set; }
         public ICollection<Generation> Generations { get; set; }
-        public virtual Advert Advert { get; set; }
+        public ICollection<Advert> Adverts { get; set; }
     }
 }

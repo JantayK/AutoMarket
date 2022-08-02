@@ -15,6 +15,8 @@ namespace AutoMarket.WEB.ViewModels.Comment
 
         [ForeignKey("User")]
         public string UserId { get; set; }
+        [ForeignKey("Advert")]
+        public string AdvertId { get; set; }
 
         [StringLength(1000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 1000 символов")]
         [Required(ErrorMessage = "Заполните это поле")]

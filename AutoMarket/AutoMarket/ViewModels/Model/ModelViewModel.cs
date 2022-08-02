@@ -1,4 +1,5 @@
 ﻿using AutoMarket.DAL.Models;
+using AutoMarket.WEB.ViewModels.Advert;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,5 +21,6 @@ namespace AutoMarket.WEB.ViewModels
         [Display(Name = "Название модели")]
         public string Name { get; set; }
         public virtual BrandViewModel Brand { get; set; }
+        public ICollection<AdvertViewModel> Adverts { get; set; }
     }
 }

@@ -22,5 +22,6 @@ namespace AutoMarket.DAL.Models
 
         public virtual Model Model { get; set; }
         public ICollection<CarCharacteristics> CarCharacteristics { get; set; }
+        public ICollection<Advert> Adverts { get; set; }
     }
 }

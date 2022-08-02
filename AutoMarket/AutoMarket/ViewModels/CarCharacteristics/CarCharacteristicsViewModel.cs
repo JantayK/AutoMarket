@@ -78,6 +78,6 @@ namespace AutoMarket.WEB.ViewModels.CarCharacteristics
         [Required(ErrorMessage = "Обязательное поле")]
         [StringLength(3, MinimumLength = 2, ErrorMessage = "Некорректный ввод")]
         public int FuelTankCapacity { get; set; }
-        public virtual ModelViewModel Model { get; set; }
+        public virtual GenerationViewModel Generation { get; set; }
     }
 }

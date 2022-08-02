@@ -41,7 +41,8 @@ namespace AutoMarket
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
 
-            }).AddEntityFrameworkStores<ApplicationDbContext>();
+            }).AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddScoped<UnitOfWork>();
 

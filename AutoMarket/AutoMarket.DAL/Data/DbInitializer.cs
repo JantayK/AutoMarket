@@ -768,7 +768,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "300 Series",
                         StartYear = 2020,
                         EndYear = 2022,
-                        GenerationNumber = 6,
+                        GenerationNumber = 7,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "Land Cruiser").Id
                     },

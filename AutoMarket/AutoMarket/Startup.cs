@@ -1,3 +1,4 @@
+using AutoMarket.BLL.Profiles;
 using AutoMarket.BLL.Services;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
@@ -46,7 +47,13 @@ namespace AutoMarket
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddScoped<UnitOfWork>();
 
-
+            services.AddAutoMapper(typeof(AdvertProfile)
+                                  , typeof(BrandProfile)
+                                  , typeof(CarCharacteristicsProfile)
+                                  , typeof(CommentProfile)
+                                  , typeof(GenerationProfile)
+                                  , typeof(ModelProfile)
+                                  , typeof(UserProfile));
             services.AddTransient<IAdvertService, AdvertService>();
             services.AddTransient<IBrandService, BrandService>();
             services.AddTransient<IModelService, ModelService>();

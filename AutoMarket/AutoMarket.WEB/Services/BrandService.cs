@@ -1,4 +1,6 @@
-﻿using AutoMarket.DAL.Models;
+﻿using AutoMapper;
+using AutoMarket.DAL.Data;
+using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,13 @@ namespace AutoMarket.BLL.Services
 {
     public class BrandService : IBrandService
     {
+        private readonly UnitOfWork _uow;
+        private readonly IMapper _mapper;
+        public BrandService(UnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
         public async Task<Brand> CreateAsync(Brand brand)
         {
             throw new NotImplementedException();

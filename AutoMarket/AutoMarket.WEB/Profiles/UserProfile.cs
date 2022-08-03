@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using AutoMarket.BLL.Dtos.Advert;
+using AutoMarket.BLL.Dtos.User;
 using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Profiles
 {
-    public class AdvertProfile : Profile
+    public class UserProfile : Profile
     {
-        public AdvertProfile()
+        public UserProfile()
         {
-            CreateMap<AdvertDto, Advert>().ReverseMap();
+            CreateMap<UserDto, User>().ReverseMap();
         }
     }
 }

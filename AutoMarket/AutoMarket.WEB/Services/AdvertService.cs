@@ -1,4 +1,5 @@
-﻿using AutoMarket.DAL.Data;
+﻿using AutoMapper;
+using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Enums;
 using AutoMarket.DAL.Models;
 using System;
@@ -15,9 +16,11 @@ namespace AutoMarket.BLL.Services
     public class AdvertService : IAdvertService
     {
         private readonly UnitOfWork _uow;
-        public AdvertService(UnitOfWork uow)
+        private readonly IMapper _mapper;
+        public AdvertService(UnitOfWork uow, IMapper mapper)
         {
             _uow = uow;
+            _mapper = mapper;
         }
         public async Task<Advert> CreateAsync(Advert advert)
         {

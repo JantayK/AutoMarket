@@ -3628,7 +3628,6 @@ namespace AutoMarket.DAL.Data
                         Width = 2004,
                         GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G05").Id
                     });
-
                 context.SaveChanges();
             }
         }

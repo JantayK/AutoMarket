@@ -2096,7 +2096,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 540,
                         Weight = 2125,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2013).Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222, C217" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2113,7 +2113,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 700,
                         Weight = 2125,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2013).Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222, C217" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2130,7 +2130,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 600,
                         Weight = 2050,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2017).Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222, C217" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {

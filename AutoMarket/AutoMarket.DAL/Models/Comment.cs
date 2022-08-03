@@ -21,5 +21,6 @@ namespace AutoMarket.DAL.Models
         [StringLength(1000)]
         public string Text { get; set; }
         public virtual User User { get; set; }
+        public virtual Advert Advert { get; set; }
     }
 }

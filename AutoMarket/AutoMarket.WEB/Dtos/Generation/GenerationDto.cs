@@ -1,5 +1,6 @@
-﻿using AutoMarket.WEB.ViewModels.Advert;
-using AutoMarket.WEB.ViewModels.CarCharacteristics;
+﻿using AutoMarket.BLL.Dtos.Advert;
+using AutoMarket.BLL.Dtos.CarCharacteristics;
+using AutoMarket.BLL.Dtos.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,9 +8,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutoMarket.WEB.ViewModels
+namespace AutoMarket.BLL.Dtos.Generation
 {
-    public class GenerationViewModel
+    /// <summary>
+    /// Dto модель для Поколения
+    /// </summary>
+    public class GenerationDto
     {
         public int Id { get; set; }
 
@@ -41,8 +45,8 @@ namespace AutoMarket.WEB.ViewModels
         [Display(Name = "Рестайлинг")]
         public bool Restyling { get; set; }
 
-        public virtual ModelViewModel Model { get; set; }
-        public ICollection<CarCharacteristicsViewModel> CarCharacteristics { get; set; }
-        public ICollection<AdvertViewModel> Adverts { get; set; }
+        public virtual ModelDto Model { get; set; }
+        public ICollection<CarCharacteristicsDto> CarCharacteristics { get; set; }
+        public ICollection<AdvertDto> Adverts { get; set; }
     }
 }

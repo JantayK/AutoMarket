@@ -1,5 +1,8 @@
-﻿using AutoMarket.DAL.Enums;
-using AutoMarket.WEB.ViewModels.User;
+﻿using AutoMarket.BLL.Dtos.Brand;
+using AutoMarket.BLL.Dtos.Generation;
+using AutoMarket.BLL.Dtos.Model;
+using AutoMarket.BLL.Dtos.User;
+using AutoMarket.DAL.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,9 +10,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutoMarket.WEB.ViewModels.Advert
+namespace AutoMarket.BLL.Dtos.Advert
 {
-    public class AdvertViewModel
+    /// <summary>
+    /// Dto модель для Объявления
+    /// </summary>
+    public class AdvertDto
     {
         public int Id { get; set; }
 
@@ -75,9 +81,9 @@ namespace AutoMarket.WEB.ViewModels.Advert
         [Required(ErrorMessage = "Обязательное поле")]
         [StringLength(10, MinimumLength = 1, ErrorMessage = "Минимум 1, максимум 10 цифр")]
         public Decimal Price { get; set; }
-        public virtual BrandViewModel Brand { get; set; }
-        public virtual ModelViewModel Model { get; set; }
-        public virtual GenerationViewModel Generation { get; set; }
-        public virtual UserViewModel User { get; set; }
+        public virtual BrandDto Brand { get; set; }
+        public virtual ModelDto Model { get; set; }
+        public virtual GenerationDto Generation { get; set; }
+        public virtual UserDto User { get; set; }
     }
 }

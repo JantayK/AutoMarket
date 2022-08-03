@@ -1,5 +1,6 @@
 ﻿using AutoMarket.DAL.Models;
-using AutoMarket.WEB.ViewModels.Advert;
+using AutoMarket.BLL.Dtos.Brand;
+using AutoMarket.BLL.Dtos.Advert;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,9 +8,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutoMarket.WEB.ViewModels
+namespace AutoMarket.BLL.Dtos.Model
 {
-    public class ModelViewModel
+    /// <summary>
+    /// Dto модель для Модели машины
+    /// </summary>
+    public class ModelDto
     {
         public int Id { get; set; }
 
@@ -20,7 +24,7 @@ namespace AutoMarket.WEB.ViewModels
         [Required(ErrorMessage = "Обязательное поле")]
         [Display(Name = "Название модели")]
         public string Name { get; set; }
-        public virtual BrandViewModel Brand { get; set; }
-        public ICollection<AdvertViewModel> Adverts { get; set; }
+        public virtual BrandDto Brand { get; set; }
+        public ICollection<AdvertDto> Adverts { get; set; }
     }
 }

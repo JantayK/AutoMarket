@@ -9,7 +9,6 @@ namespace AutoMarket.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Model> Models { get; set; }

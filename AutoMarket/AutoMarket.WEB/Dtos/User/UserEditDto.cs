@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutoMarket.WEB.ViewModels.User
+namespace AutoMarket.BLL.Dtos.User
 {
-    public class UserEditViewModel
+    public class UserEditDto
     {
         [Required(ErrorMessage = "Обязательное поле")]
         [EmailAddress(ErrorMessage = "Некорректный Email")]

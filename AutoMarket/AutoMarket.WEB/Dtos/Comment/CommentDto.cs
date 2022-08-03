@@ -4,12 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMarket.BLL.Dtos.User;
 using AutoMarket.DAL.Models;
-using AutoMarket.WEB.ViewModels.User;
 
-namespace AutoMarket.WEB.ViewModels.Comment
+namespace AutoMarket.BLL.Dtos.Comment
 {
-    public class CommentViewModel
+    /// <summary>
+    /// Dto модель для Комментариев
+    /// </summary>
+    public class CommentDto
     {
         public int Id { get; set; }
 
@@ -23,6 +26,6 @@ namespace AutoMarket.WEB.ViewModels.Comment
         [Display(Name = "Текст комментария")]
         [DataType(DataType.Text)]
         public string Text { get; set; }
-        public virtual UserViewModel User { get; set; }
+        public virtual UserDto User { get; set; }
     }
 }

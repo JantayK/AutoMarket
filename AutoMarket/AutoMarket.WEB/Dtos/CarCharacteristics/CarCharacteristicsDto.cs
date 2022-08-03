@@ -1,13 +1,17 @@
-﻿using System;
+﻿using AutoMarket.BLL.Dtos.Generation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutoMarket.WEB.ViewModels.CarCharacteristics
+namespace AutoMarket.BLL.Dtos.CarCharacteristics
 {
-    public class CarCharacteristicsViewModel
+    /// <summary>
+    /// Dto модель для характеристик машин
+    /// </summary>
+    public class CarCharacteristicsDto
     {
         public int Id { get; set; }
 
@@ -78,6 +82,6 @@ namespace AutoMarket.WEB.ViewModels.CarCharacteristics
         [Required(ErrorMessage = "Обязательное поле")]
         [StringLength(3, MinimumLength = 2, ErrorMessage = "Некорректный ввод")]
         public int FuelTankCapacity { get; set; }
-        public virtual GenerationViewModel Generation { get; set; }
+        public virtual GenerationDto Generation { get; set; }
     }
 }

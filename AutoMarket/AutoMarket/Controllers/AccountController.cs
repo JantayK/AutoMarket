@@ -1,7 +1,7 @@
-﻿using AutoMarket.BLL.Services;
+﻿using AutoMarket.BLL.Dtos.User;
+using AutoMarket.BLL.Services;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
-using AutoMarket.WEB.ViewModels.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,7 @@ namespace AutoMarket.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(UserRegisterViewModel model)
+        public async Task<IActionResult> Register(UserRegisterDto model)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace AutoMarket.WEB.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-            var model = new UserLoginViewModel()
+            var model = new UserLoginDto()
             {
                 ReturnUrl = returnUrl
             };
@@ -77,7 +77,7 @@ namespace AutoMarket.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UserLoginViewModel model)
+        public async Task<IActionResult> Login(UserLoginDto model)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +126,7 @@ namespace AutoMarket.WEB.Controllers
                 return NotFound();
             }
 
-            var model = new UserEditViewModel()
+            var model = new UserEditDto()
             {
                 Email = user.Email,
                 FirstName = user.FirstName,
@@ -137,7 +137,7 @@ namespace AutoMarket.WEB.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Edit(UserEditViewModel model)
+        public async Task<IActionResult> Edit(UserEditDto model)
         {
             if(ModelState.IsValid)
             {
@@ -172,7 +172,7 @@ namespace AutoMarket.WEB.Controllers
         [Authorize]
         public IActionResult ChangePassword()
         {
-            var model = new UserChangePasswordViewModel()
+            var model = new UserChangePasswordDto()
             {
                 Id = User.FindFirstValue(ClaimTypes.NameIdentifier)
             };
@@ -182,7 +182,7 @@ namespace AutoMarket.WEB.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> ChangePassword(UserChangePasswordViewModel model)
+        public async Task<IActionResult> ChangePassword(UserChangePasswordDto model)
         {
             if(ModelState.IsValid)
             {

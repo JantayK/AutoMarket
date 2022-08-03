@@ -17,8 +17,7 @@ namespace AutoMarket.DAL.Data
                 context.Brands.AddRange(
                     new Brand()
                     {
-                        Name = "Mercedes-Benz",
-
+                        Name = "Mercedes-Benz"
                     },
                     new Brand()
                     {
@@ -34,7 +33,7 @@ namespace AutoMarket.DAL.Data
                     });
 
             }
-            
+
             context.SaveChanges();
 
             if (!context.Models.Any())
@@ -101,7 +100,7 @@ namespace AutoMarket.DAL.Data
                         BrandId = context.Brands.FirstOrDefault(b => b.Name == "Toyota").Id
                     });
             }
-            
+
             context.SaveChanges();
 
             if (!context.Generations.Any())
@@ -391,7 +390,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "1es",
                         StartYear = 1991,
                         EndYear = 1994,
-                        GenerationNumber = 2,
+                        GenerationNumber = 1,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -400,7 +399,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "1es",
                         StartYear = 1994,
                         EndYear = 1996,
-                        GenerationNumber = 2,
+                        GenerationNumber = 1,
                         Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -409,7 +408,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "1es",
                         StartYear = 1996,
                         EndYear = 2001,
-                        GenerationNumber = 3,
+                        GenerationNumber = 1,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -418,7 +417,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "2es",
                         StartYear = 2001,
                         EndYear = 2003,
-                        GenerationNumber = 4,
+                        GenerationNumber = 2,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -427,7 +426,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "2es",
                         StartYear = 2003,
                         EndYear = 2006,
-                        GenerationNumber = 4,
+                        GenerationNumber = 2,
                         Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -436,7 +435,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "3es",
                         StartYear = 2006,
                         EndYear = 2009,
-                        GenerationNumber = 5,
+                        GenerationNumber = 3,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -445,8 +444,8 @@ namespace AutoMarket.DAL.Data
                         BodyName = "3es",
                         StartYear = 2009,
                         EndYear = 2012,
-                        GenerationNumber = 5,
-                        Restyling = false,
+                        GenerationNumber = 3,
+                        Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
                     new Generation()
@@ -454,7 +453,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "4es",
                         StartYear = 2012,
                         EndYear = 2015,
-                        GenerationNumber = 6,
+                        GenerationNumber = 4,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -463,7 +462,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "4es",
                         StartYear = 2015,
                         EndYear = 2018,
-                        GenerationNumber = 6,
+                        GenerationNumber = 4,
                         Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -472,7 +471,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "5es",
                         StartYear = 2018,
                         EndYear = 2021,
-                        GenerationNumber = 7,
+                        GenerationNumber = 5,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -481,7 +480,7 @@ namespace AutoMarket.DAL.Data
                         BodyName = "5es",
                         StartYear = 2021,
                         EndYear = 2022,
-                        GenerationNumber = 7,
+                        GenerationNumber = 5,
                         Restyling = true,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "ES").Id
                     },
@@ -767,8 +766,8 @@ namespace AutoMarket.DAL.Data
                     new Generation()
                     {
                         BodyName = "300 Series",
-                        StartYear = 2015,
-                        EndYear = 2021,
+                        StartYear = 2020,
+                        EndYear = 2022,
                         GenerationNumber = 6,
                         Restyling = false,
                         ModelId = context.Models.FirstOrDefault(b => b.Name == "Land Cruiser").Id
@@ -957,7 +956,6 @@ namespace AutoMarket.DAL.Data
 
             context.SaveChanges();
 
-
             if (!context.CarCharacteristics.Any())
             {
                 context.CarCharacteristics.AddRange(
@@ -1112,7 +1110,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 190,
                         Weight = 1425,
                         Width = 1798,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210" && x.StartYear == 1995).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1129,7 +1127,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 225,
                         Weight = 1425,
                         Width = 1798,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210" && x.StartYear == 1995).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1146,7 +1144,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 315,
                         Weight = 1505,
                         Width = 1798,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210" && x.StartYear == 1995).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1163,7 +1161,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1575,
                         Width = 1798,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210" && x.StartYear == 1999).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1180,7 +1178,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1575,
                         Width = 1798,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W210, S210" && x.StartYear == 1999).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1197,7 +1195,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 350,
                         Weight = 1620,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1214,7 +1212,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 230,
                         Weight = 1510,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1231,7 +1229,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 340,
                         Weight = 1510,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1248,7 +1246,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 540,
                         Weight = 1680,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1265,7 +1263,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 530,
                         Weight = 1810,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1282,7 +1280,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 500,
                         Weight = 1735,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W211, S211" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1299,7 +1297,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1854,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1316,7 +1314,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 270,
                         Weight = 1655,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1333,7 +1331,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 340,
                         Weight = 1735,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1350,7 +1348,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 270,
                         Weight = 1735,
                         Width = 1822,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1367,7 +1365,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 530,
                         Weight = 1830,
                         Width = 1854,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W212, S212, C207" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1384,7 +1382,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 300,
                         Weight = 1605,
                         Width = 1852,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W213, S213, C238").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W213, S213, C238" && x.StartYear == 2016).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1401,7 +1399,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 480,
                         Weight = 1820,
                         Width = 1852,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W213, S213, C238").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W213, S213, C238" && x.StartYear == 2020).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1418,7 +1416,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 170,
                         Weight = 1350,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1993).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1435,7 +1433,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 190,
                         Weight = 1365,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1993).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1452,7 +1450,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 210,
                         Weight = 1365,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1993).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1469,7 +1467,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 280,
                         Weight = 1420,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1997).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1486,7 +1484,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 280,
                         Weight = 1420,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1997).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1503,7 +1501,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 270,
                         Weight = 1420,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1997).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1520,7 +1518,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 240,
                         Weight = 1420,
                         Width = 1720,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W202" && x.StartYear == 1993).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1537,7 +1535,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 240,
                         Weight = 1435,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2000).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1554,7 +1552,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 245,
                         Weight = 1435,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2000).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1571,7 +1569,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 240,
                         Weight = 1435,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2000).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1588,7 +1586,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 300,
                         Weight = 1435,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2004).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1605,7 +1603,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 310,
                         Weight = 1435,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2004).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1622,7 +1620,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 350,
                         Weight = 1585,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2004).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1639,7 +1637,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 350,
                         Weight = 1585,
                         Width = 1728,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W203" && x.StartYear == 2004).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1656,7 +1654,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 270,
                         Weight = 1505,
                         Width = 1770,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1673,7 +1671,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 245,
                         Weight = 1540,
                         Width = 1770,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1690,7 +1688,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 300,
                         Weight = 1555,
                         Width = 1770,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W204" && x.StartYear == 2011).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1707,7 +1705,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 250,
                         Weight = 1425,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205" && x.StartYear == 2014).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1724,7 +1722,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1425,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205" && x.StartYear == 2014).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1741,7 +1739,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1665,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1758,7 +1756,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 480,
                         Weight = 1665,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W205" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1877,7 +1875,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 430,
                         Weight = 1935,
                         Width = 1870,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126" && x.StartYear == 1979).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1894,7 +1892,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 325,
                         Weight = 1620,
                         Width = 1870,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126" && x.StartYear == 1979).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1911,7 +1909,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 315,
                         Weight = 1491,
                         Width = 1870,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W126" && x.StartYear == 1985).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1928,7 +1926,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1965,
                         Width = 1887,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140" && x.StartYear == 1991).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1945,7 +1943,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 470,
                         Weight = 2010,
                         Width = 1887,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140" && x.StartYear == 1994).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1962,7 +1960,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 570,
                         Weight = 2155,
                         Width = 1887,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W140" && x.StartYear == 1994).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1979,7 +1977,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1805,
                         Width = 1855,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220" && x.StartYear == 1998).Id
                     },
                     new CarCharacteristics()
                     {
@@ -1996,7 +1994,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1805,
                         Width = 1855,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2013,7 +2011,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 500,
                         Weight = 1855,
                         Width = 1855,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W220" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2030,7 +2028,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 700,
                         Weight = 2075,
                         Width = 1871,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221" && x.StartYear == 2005).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2047,7 +2045,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 830,
                         Weight = 3755,
                         Width = 1871,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221" && x.StartYear == 2005).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2064,7 +2062,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 830,
                         Weight = 3755,
                         Width = 1871,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2081,7 +2079,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 620,
                         Weight = 1880,
                         Width = 1871,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W221" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2098,7 +2096,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 540,
                         Weight = 2125,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2115,7 +2113,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 700,
                         Weight = 2125,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2132,7 +2130,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 600,
                         Weight = 2050,
                         Width = 1905,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "W222" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2217,24 +2215,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 301,
                         Weight = 1800,
                         Width = 1815,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "20").Id
-                    },
-                    new CarCharacteristics()
-                    {
-                        AccelerationTime = 8.5,
-                        AverageFuelConsumption = 13,
-                        Clearance = 190,
-                        Cylinders = 6,
-                        EngineVolume = 2995,
-                        EnginePower = 223,
-                        FuelTankCapacity = 75,
-                        Height = 1660,
-                        Length = 4580,
-                        MaxSpeed = 180,
-                        Torque = 301,
-                        Weight = 1800,
-                        Width = 1815,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "20").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "1rx").Id
                     },
                     new CarCharacteristics()
                     {
@@ -2251,7 +2232,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 283,
                         Weight = 1880,
                         Width = 1845,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "30").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2rx" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2268,7 +2249,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 328,
                         Weight = 1815,
                         Width = 1845,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "30").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2rx" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2285,7 +2266,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 288,
                         Weight = 2000,
                         Width = 1845,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "30").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2rx" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2302,7 +2283,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 342,
                         Weight = 1835,
                         Width = 1845,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "30r").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2rx" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2319,7 +2300,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 252,
                         Weight = 1915,
                         Width = 1885,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "40").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3rx" && x.StartYear == 2008).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2336,7 +2317,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 252,
                         Weight = 1915,
                         Width = 1885,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "40").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3rx" && x.StartYear == 2012).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2353,7 +2334,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 350,
                         Weight = 2035,
                         Width = 1895,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4rx" && x.StartYear == 2015).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2370,7 +2351,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 370,
                         Weight = 2035,
                         Width = 1895,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4rx" && x.StartYear == 2019).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2404,7 +2385,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 328,
                         Weight = 2450,
                         Width = 1940,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2lx").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2lx" && x.StartYear == 2002).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2421,7 +2402,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 530,
                         Weight = 2655,
                         Width = 1970,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3lx").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3lx" && x.StartYear == 2012).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2472,7 +2453,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 275,
                         Weight = 1530,
                         Width = 1780,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "1es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "1es" && x.StartYear == 1994).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2489,7 +2470,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 299,
                         Weight = 1560,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2es" && x.StartYear == 2001).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2506,7 +2487,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 325,
                         Weight = 1560,
                         Width = 1810,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "2es" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2523,7 +2504,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 325,
                         Weight = 1635,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "3es" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2540,7 +2521,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 199,
                         Weight = 1575,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es" && x.StartYear == 2012).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2557,7 +2538,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 235,
                         Weight = 1575,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es" && x.StartYear == 2012).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2574,7 +2555,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 346,
                         Weight = 1575,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es" && x.StartYear == 2015).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2591,7 +2572,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 213,
                         Weight = 1765,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "4es" && x.StartYear == 2015).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2608,7 +2589,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 192,
                         Weight = 1700,
                         Width = 1865,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2625,7 +2606,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 243,
                         Weight = 1700,
                         Width = 1865,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2642,7 +2623,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 243,
                         Weight = 1681,
                         Width = 1865,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "5es" && x.StartYear == 2021).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2659,7 +2640,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 121,
                         Weight = 1010,
                         Width = 1695,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist1").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist1" && x.StartYear == 2001).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2676,7 +2657,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 141,
                         Weight = 1030,
                         Width = 1695,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist1").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist1" && x.StartYear == 2005).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2693,7 +2674,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 174,
                         Weight = 1150,
                         Width = 1725,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist2").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist2" && x.StartYear == 2007).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2710,7 +2691,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 141,
                         Weight = 1150,
                         Width = 1725,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist2").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "ist2" && x.StartYear == 2007).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2727,7 +2708,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 196,
                         Weight = 1400,
                         Width = 1785,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20" && x.StartYear == 1996).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2744,7 +2725,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 245,
                         Weight = 1440,
                         Width = 1785,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20" && x.StartYear == 1999).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2761,7 +2742,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 275,
                         Weight = 1445,
                         Width = 1785,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV20" && x.StartYear == 1999).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2778,7 +2759,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 220,
                         Weight = 1390,
                         Width = 1795,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV30").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV30" && x.StartYear == 2001).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2795,7 +2776,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 267,
                         Weight = 1515,
                         Width = 1795,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV30").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV30" && x.StartYear == 2004).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2812,7 +2793,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 346,
                         Weight = 1540,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV40").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV40" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2829,7 +2810,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 233,
                         Weight = 1510,
                         Width = 1820,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV40").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV40" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2846,7 +2827,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 199,
                         Weight = 1530,
                         Width = 1825,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50" && x.StartYear == 2011).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2863,7 +2844,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 231,
                         Weight = 1540,
                         Width = 1825,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50" && x.StartYear == 2011).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2880,7 +2861,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 246,
                         Weight = 1615,
                         Width = 1825,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV50" && x.StartYear == 2014).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2897,7 +2878,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 206,
                         Weight = 1560,
                         Width = 1840,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2914,7 +2895,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 243,
                         Weight = 1560,
                         Width = 1840,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70" && x.StartYear == 2018).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2931,7 +2912,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 363,
                         Weight = 1623,
                         Width = 1840,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "XV70" && x.StartYear == 2020).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2948,7 +2929,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 430,
                         Weight = 2650,
                         Width = 1940,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series" && x.StartYear == 1998).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2965,7 +2946,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 387,
                         Weight = 2345,
                         Width = 1940,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series" && x.StartYear == 2005).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2982,7 +2963,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 434,
                         Weight = 2260,
                         Width = 1940,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "100 Series" && x.StartYear == 2005).Id
                     },
                     new CarCharacteristics()
                     {
@@ -2999,7 +2980,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 434,
                         Weight = 2585,
                         Width = 1970,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series" && x.StartYear == 2007).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3016,7 +2997,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 439,
                         Weight = 2585,
                         Width = 1970,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series" && x.StartYear == 2007).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3033,7 +3014,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 543,
                         Weight = 2614,
                         Width = 1970,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "200 Series" && x.StartYear == 2012).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3050,7 +3031,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 543,
                         Weight = 2485,
                         Width = 1980,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series" && x.StartYear == 2020).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3067,7 +3048,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 385,
                         Weight = 2375,
                         Width = 1980,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series" && x.StartYear == 2020).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3084,7 +3065,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 700,
                         Weight = 2495,
                         Width = 1980,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "300 Series" && x.StartYear == 2020).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3203,7 +3184,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 350,
                         Weight = 1595,
                         Width = 1800,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39" && x.StartYear == 2000).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3220,7 +3201,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 210,
                         Weight = 1495,
                         Width = 1800,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39" && x.StartYear == 1995).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3237,7 +3218,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 300,
                         Weight = 1530,
                         Width = 1800,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39" && x.StartYear == 2000).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3254,7 +3235,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 420,
                         Weight = 1615,
                         Width = 1800,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E39" && x.StartYear == 1995).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3271,7 +3252,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 200,
                         Weight = 1640,
                         Width = 1846,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3288,7 +3269,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 320,
                         Weight = 1615,
                         Width = 1846,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3305,7 +3286,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 390,
                         Weight = 1735,
                         Width = 1846,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3322,7 +3303,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 580,
                         Weight = 1735,
                         Width = 1846,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E60/61" && x.StartYear == 2007).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3339,7 +3320,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 270,
                         Weight = 1615,
                         Width = 1860,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3356,7 +3337,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 1765,
                         Width = 1860,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3373,7 +3354,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 650,
                         Weight = 1830,
                         Width = 1860,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07" && x.StartYear == 2009).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3390,7 +3371,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 560,
                         Weight = 1810,
                         Width = 1860,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "F10/F11/F07" && x.StartYear == 2013).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3407,7 +3388,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 290,
                         Weight = 1610,
                         Width = 1868,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3424,7 +3405,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 450,
                         Weight = 1660,
                         Width = 1868,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3441,7 +3422,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 750,
                         Weight = 1915,
                         Width = 1868,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3458,7 +3439,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 650,
                         Weight = 1760,
                         Width = 1868,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G30/G31" && x.StartYear == 2017).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3475,7 +3456,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 750,
                         Weight = 2555,
                         Width = 2000,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G07" && x.StartYear == 2019).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3492,7 +3473,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 450,
                         Weight = 2320,
                         Width = 2000,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G07").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G07" && x.StartYear == 2022).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3509,7 +3490,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 300,
                         Weight = 2025,
                         Width = 1872,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E53").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E53" && x.StartYear == 1999).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3526,7 +3507,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 500,
                         Weight = 2205,
                         Width = 1872,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E53").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E53" && x.StartYear == 2003).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3543,7 +3524,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 600,
                         Weight = 2185,
                         Width = 1933,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E70" && x.StartYear == 2006).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3560,7 +3541,7 @@ namespace AutoMarket.DAL.Data
                         Torque = 400,
                         Weight = 2145,
                         Width = 1933,
-                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E70").Id
+                        GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "E70" && x.StartYear == 2010).Id
                     },
                     new CarCharacteristics()
                     {
@@ -3647,9 +3628,8 @@ namespace AutoMarket.DAL.Data
                         Width = 2004,
                         GenerationId = context.Generations.FirstOrDefault(x => x.BodyName == "G05").Id
                     });
+                context.SaveChanges();
             }
-            
-            context.SaveChanges();
         }
     }
 }

@@ -16,6 +16,6 @@ namespace AutoMarket.BLL.Services
         public void Edit(GenerationDto generationDto);
         public void Delete(GenerationDto generationDto);
         public Task<List<GenerationDto>> GetAllAsync();
-        public Task<GenerationDto> GetByBodyNameAsync();
+        public Task<GenerationDto> GetByBodyNameAsync(int id);
     }
 }

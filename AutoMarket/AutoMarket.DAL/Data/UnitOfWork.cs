@@ -79,6 +79,10 @@ namespace AutoMarket.DAL.Data
                 return _commentRepository;
             }
         }
+
+        /// <summary>
+        /// Сохранение Изменений
+        /// </summary>
         public void Save()
         {
             _context.SaveChanges();

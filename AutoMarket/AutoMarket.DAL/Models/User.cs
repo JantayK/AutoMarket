@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.DAL.Models
 {
+    /// <summary>
+    /// Модель юзера
+    /// </summary>
     public class User : IdentityUser
     {
+        /// <summary>
+        /// Имя
+        /// </summary>
         public string FirstName { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public virtual Advert Advert { get; set; }

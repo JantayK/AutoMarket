@@ -9,11 +9,16 @@ using System.Threading.Tasks;
 namespace AutoMarket.BLL.Dtos.Brand
 {
     /// <summary>
-    /// Dto модель для Марки
+    /// Dto модель для Брэнда
     /// </summary>
     public class BrandDto
     {
         public int Id { get; set; }
+
+        /// <summary>
+        /// Название Брэнда
+        /// </summary>
+
         [Required(ErrorMessage = "Обязательное поле")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 50 символов")]
         [Display(Name = "Название брэнда")]

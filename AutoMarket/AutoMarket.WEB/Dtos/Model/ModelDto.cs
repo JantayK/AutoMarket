@@ -20,6 +20,10 @@ namespace AutoMarket.BLL.Dtos.Model
         [ForeignKey("Brand")]
         public int BrandId { get; set; }
 
+        /// <summary>
+        /// Название модели
+        /// </summary>
+
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 50 символов")]
         [Required(ErrorMessage = "Обязательное поле")]
         [Display(Name = "Название модели")]

@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.DAL.Models
 {
+    /// <summary>
+    /// Модель Брэнда
+    /// </summary>
     public class Brand : IEntity<int>
     {
         public int Id { get; set; }
+
+        /// <summary>
+        /// Название брэнда
+        /// </summary>
         public string Name { get; set; }
         public ICollection<Model> Models { get; set; }
         public ICollection<Advert> Adverts { get; set; }

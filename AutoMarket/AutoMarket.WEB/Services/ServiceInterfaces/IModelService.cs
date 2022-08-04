@@ -16,6 +16,6 @@ namespace AutoMarket.BLL.Services
         public void Edit(ModelDto modelDto);
         public void Delete(ModelDto modelDto);
         public Task<List<ModelDto>> GetAllAsync();
-        public Task<ModelDto> GetByNameAsync(string name);
+        public Task<ModelDto> GetByNameAsync(int id);
     }
 }

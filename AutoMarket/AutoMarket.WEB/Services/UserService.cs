@@ -21,6 +21,11 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
+
+        /// <summary>
+        /// Изменение Личной информации Пользователя 
+        /// </summary>
+        /// <param name="userDto"></param>
         public void EditPersonalData(UserDto userDto)
         {
             throw new NotImplementedException();

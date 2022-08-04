@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Generation;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using System;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Поколения Машины
+    /// </summary>
     public class GeneretionService : IGenerationService
     {
         private readonly UnitOfWork _uow;
@@ -18,29 +22,64 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Generation> CreateAsync(Generation generation)
+
+        /// <summary>
+        /// Создание Поколения
+        /// </summary>
+        /// <param name="generationDto"></param>
+        /// <returns></returns>
+        public async Task<GenerationDto> CreateAsync(GenerationDto generationDto)
         {
-            throw new NotImplementedException();
+            var generation = _mapper.Map<Generation>(generationDto);
+            var addedGeneration = await _uow.GenerationRepository.CreateAsync(generation);
+            await _uow.GenerationRepository.SaveAsync();
+            var result = _mapper.Map<GenerationDto>(addedGeneration);
+            return result;
         }
 
-        public void Delete(Generation generation)
+        /// <summary>
+        /// Удаление Поколения
+        /// </summary>
+        /// <param name="generationDto"></param>
+        public void Delete(GenerationDto generationDto)
         {
-            throw new NotImplementedException();
+            var generation = _mapper.Map<Generation>(generationDto);
+            _uow.GenerationRepository.Delete(generation);
+            _uow.Save();
         }
 
-        public void Edit(Generation generation)
+        /// <summary>
+        /// Изменение Поколения 
+        /// </summary>
+        /// <param name="generationDto"></param>
+        public void Edit(GenerationDto generationDto)
         {
-            throw new NotImplementedException();
+            var generation = _mapper.Map<Generation>(generationDto);
+            _uow.GenerationRepository.Edit(generation);
+            _uow.Save();
         }
 
-        public async Task<List<Generation>> GetAllAsync()
+        /// <summary>
+        /// Получение всех поколений
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<GenerationDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var list = await _uow.GenerationRepository.GetAsync();
+            var result = _mapper.Map<List<GenerationDto>>(list);
+            return result;
         }
 
-        public async Task<Generation> GetByBodyNameAsync()
+        /// <summary>
+        /// Получение поколения по Названию кузова
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<GenerationDto> GetByBodyNameAsync(int id)
         {
-            throw new NotImplementedException();
+            var generation = await _uow.GenerationRepository.GetByIdAsync(id);
+            var result = _mapper.Map<GenerationDto>(generation);
+            return result;
         }
     }
 }

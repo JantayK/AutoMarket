@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Brand;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using System;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Марки Машины
+    /// </summary>
     public class BrandService : IBrandService
     {
         private readonly UnitOfWork _uow;
@@ -18,29 +22,64 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Brand> CreateAsync(Brand brand)
+
+        /// <summary>
+        /// Добавление Марки машины
+        /// </summary>
+        /// <param name="brandDto"></param>
+        /// <returns></returns>
+        public async Task<BrandDto> CreateAsync(BrandDto brandDto)
         {
-            throw new NotImplementedException();
+            var brand = _mapper.Map<Brand>(brandDto);
+            var addedBrand = await _uow.BrandRepository.CreateAsync(brand);
+            await _uow.BrandRepository.SaveAsync();
+            var result = _mapper.Map<BrandDto>(addedBrand);
+            return result;
         }
 
-        public void Delete(Brand brand)
+        /// <summary>
+        /// Удаление марки машины
+        /// </summary>
+        /// <param name="brandDto"></param>
+        public void Delete(BrandDto brandDto)
         {
-            throw new NotImplementedException();
+            var brand = _mapper.Map<Brand>(brandDto);
+            _uow.BrandRepository.Delete(brand);
+            _uow.Save();
         }
 
-        public void Edit(Brand brand)
+        /// <summary>
+        /// Изменение Марки машины
+        /// </summary>
+        /// <param name="brandDto"></param>
+        public void Edit(BrandDto brandDto)
         {
-            throw new NotImplementedException();
+            var brand = _mapper.Map<Brand>(brandDto);
+            _uow.BrandRepository.Edit(brand);
+            _uow.Save();
         }
 
-        public async Task<List<Brand>> GetAllAsync()
+        /// <summary>
+        /// Получение всех Марок машин
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<BrandDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var list = await _uow.BrandRepository.GetAsync();
+            var result = _mapper.Map<List<BrandDto>>(list);
+            return result;
         }
 
-        public async Task<Brand> GetByNameAsync(string name)
+        /// <summary>
+        /// Получение марок машин по Названию
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<BrandDto> GetByNameAsync(int id)
         {
-            throw new NotImplementedException();
+            var brand = await _uow.BrandRepository.GetByIdAsync(id);
+            var result = _mapper.Map<BrandDto>(brand);
+            return result;
         }
     }
 }

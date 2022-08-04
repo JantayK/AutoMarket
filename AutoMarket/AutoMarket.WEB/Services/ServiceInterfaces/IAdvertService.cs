@@ -13,9 +13,9 @@ namespace AutoMarket.BLL.Services
     /// </summary>
     public interface IAdvertService
     {
-        public Task<AdvertDto> CreateAsync(AdvertDto advert);
-        public void Edit(AdvertDto advert);
-        public void Delete(AdvertDto advert);
+        public Task<AdvertDto> CreateAsync(AdvertDto advertDto);
+        public void Edit(AdvertDto advertDto);
+        public void Delete(AdvertDto advertDto);
         public Task<List<AdvertDto>> GetAllAsync();
         public Task<List<AdvertDto>> GetByBrandAsync(string name);
         public Task<List<AdvertDto>> GetByModelAsync(string name);

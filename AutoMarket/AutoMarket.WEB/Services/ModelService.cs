@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using System;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Модели Машины
+    /// </summary>
     public class ModelService : IModelService
     {
         private readonly UnitOfWork _uow;
@@ -18,29 +22,64 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Model> CreateAsync(Model model)
+
+        /// <summary>
+        /// Создание Модели
+        /// </summary>
+        /// <param name="modelDto"></param>
+        /// <returns></returns>
+        public async Task<ModelDto> CreateAsync(ModelDto modelDto)
         {
-            throw new NotImplementedException();
+            var model = _mapper.Map<Model>(modelDto);
+            var addedModel = await _uow.ModelRepository.CreateAsync(model);
+            await _uow.ModelRepository.SaveAsync();
+            var result = _mapper.Map<ModelDto>(addedModel);
+            return result;
         }
 
-        public void Delete(Model model)
+        /// <summary>
+        /// Удаление модели
+        /// </summary>
+        /// <param name="modelDto"></param>
+        public void Delete(ModelDto modelDto)
         {
-            throw new NotImplementedException();
+            var model = _mapper.Map<Model>(modelDto);
+            _uow.ModelRepository.Delete(model);
+            _uow.Save();
         }
 
-        public void Edit(Model model)
+        /// <summary>
+        /// Изменение модели 
+        /// </summary>
+        /// <param name="modelDto"></param>
+        public void Edit(ModelDto modelDto)
         {
-            throw new NotImplementedException();
+            var model = _mapper.Map<Model>(modelDto);
+            _uow.ModelRepository.Edit(model);
+            _uow.Save();
         }
 
-        public async Task<List<Model>> GetAllAsync()
+        /// <summary>
+        /// Получение всех моделей
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<ModelDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var list = await _uow.ModelRepository.GetAsync();
+            var result = _mapper.Map<List<ModelDto>>(list);
+            return result;
         }
 
-        public async Task<Model> GetByNameAsync(string name)
+        /// <summary>
+        /// Получение модели по имени
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<ModelDto> GetByNameAsync(int id)
         {
-            throw new NotImplementedException();
+            var model = await _uow.ModelRepository.GetByIdAsync(id);
+            var result = _mapper.Map<ModelDto>(model);
+            return result;
         }
     }
 }

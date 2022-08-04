@@ -24,6 +24,11 @@ namespace AutoMarket.DAL.Data
             _set = _context.Set<T>();
         }
 
+        /// <summary>
+        /// Создание Объекта
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<T> CreateAsync(T model)
         {
             if (model == null)
@@ -35,6 +40,10 @@ namespace AutoMarket.DAL.Data
             return model; ;
         }
 
+        /// <summary>
+        /// Удаление Объекта
+        /// </summary>
+        /// <param name="model"></param>
         public void Delete(T model)
         {
             if (_set.Any(x => x.Id == model.Id))
@@ -43,6 +52,10 @@ namespace AutoMarket.DAL.Data
             }
         }
 
+        /// <summary>
+        /// Изменение Объекта
+        /// </summary>
+        /// <param name="model"></param>
         public void Edit(T model)
         {
             if (_set.Any(x => x.Id == model.Id))
@@ -51,6 +64,11 @@ namespace AutoMarket.DAL.Data
             }
         }
 
+        /// <summary>
+        /// Получение всех Объектов
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public async Task<List<T>> GetAsync(Func<T, bool> predicate = null)
         {
             var items = _set.AsQueryable();
@@ -61,11 +79,20 @@ namespace AutoMarket.DAL.Data
             return await items.ToListAsync();
         }
 
+        /// <summary>
+        /// Получение одного объекта по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<T> GetByIdAsync(int id)
         {
             return await _set.FindAsync(id);
         }
 
+        /// <summary>
+        /// Сохранение изменений
+        /// </summary>
+        /// <returns></returns>
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

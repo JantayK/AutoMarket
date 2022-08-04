@@ -44,7 +44,7 @@ namespace AutoMarket.WEB.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "Заполните это поле")]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "Неверный формат Email")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -53,7 +53,7 @@ namespace AutoMarket.WEB.Areas.Identity.Pages.Account
             [Display(Name = "Пароль")]
             public string Password { get; set; }
 
-            [Display(Name = "Запомнить меня?")]
+            [Display(Name = "Запомнить?")]
             public bool RememberMe { get; set; }
         }
 

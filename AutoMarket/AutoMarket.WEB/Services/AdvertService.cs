@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Advert;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Enums;
 using AutoMarket.DAL.Models;
@@ -22,99 +23,246 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Advert> CreateAsync(Advert advert)
+
+        /// <summary>
+        /// Создание Объявления
+        /// </summary>
+        /// <param name="advert"></param>
+        /// <returns></returns>
+        public async Task<AdvertDto> CreateAsync(AdvertDto advertDto)
         {
+            var advert = _mapper.Map<Advert>(advertDto);
             var ad = await _uow.AdvertRepository.CreateAsync(advert);
             await _uow.AdvertRepository.SaveAsync();
-            return ad;
+            var result = _mapper.Map<AdvertDto>(ad);
+            return result;
         }
 
-        public void Delete(Advert advert)
+        /// <summary>
+        /// Удаление Объявления
+        /// </summary>
+        /// <param name="advert"></param>
+        public void Delete(AdvertDto advertDto)
         {
-            if(advert != null)
+            var advert = _mapper.Map<Advert>(advertDto);
+            if (advert != null)
             {
                 _uow.AdvertRepository.Delete(advert);
                 _uow.Save();
             }
         }
 
-        public void Edit(Advert advert)
+        /// <summary>
+        /// Изменение Объявления
+        /// </summary>
+        /// <param name="advert"></param>
+        public void Edit(AdvertDto advertDto)
         {
+            var advert = _mapper.Map<Advert>(advertDto);
             _uow.AdvertRepository.Edit(advert);
             _uow.Save();
         }
 
-        public async Task<List<Advert>> GetAllAsync()
+        /// <summary>
+        /// Получение всех Объявлений
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetAllAsync()
         {
             var ad = await _uow.AdvertRepository.GetAsync();
-            return ad;
+            var result = _mapper.Map<List<AdvertDto>>(ad);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByBrandAsync(string name)
+        /// <summary>
+        /// Поиск Объявлений по Кузову машины
+        /// </summary>
+        /// <param name="bodyType"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByBodyTypeAsync(BodyType bodyType)
         {
-            if(name != null)
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.BodyType == bodyType).ToList();
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
+        }
+
+        /// <summary>
+        /// Поиск объявлений по Марке машины
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByBrandAsync(string name)
+        {
+            if (name != null)
             {
                 var list = await _uow.AdvertRepository.GetAsync();
                 var filterredList = list.Where(x => x.Brand.Name == name).ToList();
-                return filterredList;
+                var result = _mapper.Map<List<AdvertDto>>(filterredList);
+                return result;
             }
             throw new ArgumentNullException("This field can't be empty!");
         }
 
-        public async Task<List<Advert>> GetByColorAsync(Color color)
+        /// <summary>
+        /// Получение Объявлений по цвету Машины
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByColorAsync(Color color)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Color == color).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByConditionAsync(Condition condition)
+        /// <summary>
+        /// Получение Объявлений по состоянию машины
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByConditionAsync(Condition condition)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Condition == condition).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByEngineVolumeAsync(double engineVolFrom, double till)
+        /// <summary>
+        /// Поиск объявлений по типу Привода машины
+        /// </summary>
+        /// <param name="driveType"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByDriveTypeAsync(DriveType driveType)
+        {
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.DriveType == driveType).ToList();
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
+        }
+
+        /// <summary>
+        /// Получение по Объему двигателя, при помощи ОТ и ДО
+        /// </summary>
+        /// <param name="engineVolFrom"></param>
+        /// <param name="till"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByEngineVolumeAsync(double engineVolFrom, double till)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.EngineVolume >= engineVolFrom && x.EngineVolume <= till).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByGearBoxAsync(GearBox type)
+        /// <summary>
+        /// Поиск объявлений по типу Топлива машины
+        /// </summary>
+        /// <param name="fuelType"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByFuelTypeAsync(FuelType fuelType)
+        {
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.FuelType == fuelType).ToList();
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
+        }
+
+        /// <summary>
+        /// Получение Объявлений по Коробке Передач машины
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByGearBoxAsync(GearBox type)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.GearBox == type).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByGenerationAsync(int generationId)
+        /// <summary>
+        /// Получение Объявлений по Поколению машины
+        /// </summary>
+        /// <param name="generationId"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByGenerationAsync(int generationId)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Generation.Id == generationId).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByModelAsync(string name)
+        /// <summary>
+        /// Поиск объявлений по Пробегу ОТ и ДО
+        /// </summary>
+        /// <param name="mileageFrom"></param>
+        /// <param name="till"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByMileageAsync(int mileageFrom, int till)
+        {
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Mileage >= mileageFrom && x.Mileage <= till).ToList();
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
+        }
+
+        /// <summary>
+        /// Получение Объявлений по Модели машины
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByModelAsync(string name)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Model.Name == name).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByPriceAsync(decimal priceFrom, int till)
+        /// <summary>
+        /// Получение Объявлений по цене ОТ и ДО
+        /// </summary>
+        /// <param name="priceFrom"></param>
+        /// <param name="till"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByPriceAsync(decimal priceFrom, int till)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Price >= priceFrom && x.Price <= till).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
 
-        public async Task<List<Advert>> GetByYearAsync(int yearFrom, int till)
+        /// <summary>
+        /// Поиск объявлений по расположению руля у машины
+        /// </summary>
+        /// <param name="steer"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetBySteeringWheelAsync(Steer steer)
+        {
+            var list = await _uow.AdvertRepository.GetAsync();
+            var filterredList = list.Where(x => x.Steer == steer).ToList();
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
+        }
+
+        /// <summary>
+        /// Получение Объявлений По году выпуска ОТ и ДО
+        /// </summary>
+        /// <param name="yearFrom"></param>
+        /// <param name="till"></param>
+        /// <returns></returns>
+        public async Task<List<AdvertDto>> GetByYearAsync(int yearFrom, int till)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.ManufacturerYear >= yearFrom && x.ManufacturerYear <= till).ToList();
-            return filterredList;
+            var result = _mapper.Map<List<AdvertDto>>(filterredList);
+            return result;
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.CarCharacteristics;
 using AutoMarket.DAL.Data;
-using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Характеристик Машины
+    /// </summary>
     public class CarCharacteristicsService : ICarCharacteristicsService
     {
         private readonly UnitOfWork _uow;
@@ -18,17 +21,17 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<CarCharacteristics> CreateAsync(CarCharacteristics carCharacteristics)
+        public async Task<CarCharacteristicsDto> CreateAsync(CarCharacteristicsDto carCharacteristicsDto)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(CarCharacteristics carCharacteristics)
+        public void Delete(CarCharacteristicsDto carCharacteristicsDto)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(CarCharacteristics carCharacteristics)
+        public void Edit(CarCharacteristicsDto carCharacteristicsDto)
         {
             throw new NotImplementedException();
         }

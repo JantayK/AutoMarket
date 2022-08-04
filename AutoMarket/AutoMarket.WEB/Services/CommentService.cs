@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Comment;
 using AutoMarket.DAL.Data;
-using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Комментариев
+    /// </summary>
     public class CommentService : ICommentService
     {
         private readonly UnitOfWork _uow;
@@ -18,12 +21,12 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Comment> CreateAsync(Comment comment)
+        public async Task<CommentDto> CreateAsync(CommentDto commentDto)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Comment comment)
+        public void Delete(CommentDto commentDto)
         {
             throw new NotImplementedException();
         }

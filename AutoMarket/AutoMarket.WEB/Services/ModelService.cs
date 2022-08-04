@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.DAL.Data;
-using AutoMarket.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Services
 {
+    /// <summary>
+    /// Сервис Модели Машины
+    /// </summary>
     public class ModelService : IModelService
     {
         private readonly UnitOfWork _uow;
@@ -18,27 +21,27 @@ namespace AutoMarket.BLL.Services
             _uow = uow;
             _mapper = mapper;
         }
-        public async Task<Model> CreateAsync(Model model)
+        public async Task<ModelDto> CreateAsync(ModelDto modelDto)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Model model)
+        public void Delete(ModelDto modelDto)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(Model model)
+        public void Edit(ModelDto modelDto)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Model>> GetAllAsync()
+        public async Task<List<ModelDto>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Model> GetByNameAsync(string name)
+        public async Task<ModelDto> GetByNameAsync(string name)
         {
             throw new NotImplementedException();
         }

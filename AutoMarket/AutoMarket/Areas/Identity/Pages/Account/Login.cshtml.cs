@@ -53,7 +53,7 @@ namespace AutoMarket.WEB.Areas.Identity.Pages.Account
             [Display(Name = "Пароль")]
             public string Password { get; set; }
 
-            [Display(Name = "Запомнить?")]
+            [Display(Name = "Запомнить для входа")]
             public bool RememberMe { get; set; }
         }
 

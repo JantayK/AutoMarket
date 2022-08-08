@@ -47,16 +47,18 @@ namespace AutoMarket.WEB.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "Заполните это поле")]
-            [EmailAddress(ErrorMessage = "Неверный Email")]
+            [EmailAddress(ErrorMessage = "Неверный формат e-mail")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Обязательное поле")]
+            [Required(ErrorMessage = "Заполните это поле")]
+            [StringLength(50, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 50 символов")]
             [Display(Name = "Имя")]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Обязательное поле")]
+            [Required(ErrorMessage = "Заполните это поле")]
             [Phone(ErrorMessage = "Неправильный номер телефона")]
+            [StringLength(13, MinimumLength = 13, ErrorMessage = "Неверная длина телефона")]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Номер телефона")]
             public string PhoneNumber { get; set; }

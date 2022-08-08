@@ -1,4 +1,5 @@
 ﻿using AutoMarket.BLL.Dtos.Brand;
+using AutoMarket.BLL.Dtos.Comment;
 using AutoMarket.BLL.Dtos.Generation;
 using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.BLL.Dtos.User;
@@ -17,8 +18,6 @@ namespace AutoMarket.BLL.Dtos.Advert
     /// </summary>
     public class AdvertDto
     {
-        public int Id { get; set; }
-
         [ForeignKey("User")]
         public string UserId { get; set; }
 
@@ -27,6 +26,7 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [ForeignKey("Model")]
         public int ModelId { get; set; }
+
         [ForeignKey("Generation")]
         public int GenerationId { get; set; }
 
@@ -37,8 +37,7 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [Display(Name = "Год выпуска")]
         [Required(ErrorMessage = "Обязательное поле")]
-        [DataType(DataType.Date)]
-        [StringLength(4, MinimumLength = 4, ErrorMessage = "Некорректный ввод")]
+        [Range(1850, maximum: 2022, ErrorMessage = "Нельзя ввести год раньше 1850, больше 2022 года")]
         public int ManufacturerYear { get; set; }
 
         /// <summary>
@@ -71,6 +70,7 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [Display(Name = "Объем двигателя")]
         [Required(ErrorMessage = "Обязательное поле")]
+        [Range(0.6, maximum: 30.5, ErrorMessage = "Введите правильный объем (0.6 - 30.5)")]
         public double EngineVolume { get; set; }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// Расположение руля
         /// </summary>
 
-        [Display(Name = "Располодение руля")]
+        [Display(Name = "Расположение руля")]
         [Required(ErrorMessage = "Обязательное поле")]
         public Steer Steer { get; set; }
 
@@ -111,7 +111,8 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [Display(Name = "Пробег в (км)")]
         [Required(ErrorMessage = "Обязательное поле")]
-        [StringLength(7, MinimumLength = 1, ErrorMessage = "Минимум 1, максимум  7 цифр")]
+        //[MaxLength(7, Min= 1, ErrorMessage = "Минимум 1, максимум  7 цифр")]
+        [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
         public int Mileage { get; set; }
 
         /// <summary>
@@ -121,7 +122,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         [Display(Name = "Описание об автомобиле")]
         [Required(ErrorMessage = "Обязательное поле")]
         [DataType(DataType.Text)]
-        [StringLength(1000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 1000 символов")]
+        [StringLength(2000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 1000 символов")]
         public string Description { get; set; }
 
         /// <summary>
@@ -136,11 +137,12 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [Display(Name = "Цена в ($)")]
         [Required(ErrorMessage = "Обязательное поле")]
-        [StringLength(10, MinimumLength = 1, ErrorMessage = "Минимум 1, максимум 10 цифр")]
+        [Range(0, maximum: 9999999999, ErrorMessage = "Введите правильную сумму")]
         public Decimal Price { get; set; }
         public virtual BrandDto Brand { get; set; }
         public virtual ModelDto Model { get; set; }
         public virtual GenerationDto Generation { get; set; }
         public virtual UserDto User { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
     }
 }

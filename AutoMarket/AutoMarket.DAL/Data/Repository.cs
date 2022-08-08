@@ -36,8 +36,16 @@ namespace AutoMarket.DAL.Data
                 return null;
             }
 
-            await _set.AddAsync(model);
-            return model; ;
+            try
+            {
+                await _set.AddAsync(model);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+            return model;
         }
 
         /// <summary>
@@ -72,7 +80,7 @@ namespace AutoMarket.DAL.Data
         public async Task<List<T>> GetAsync(Func<T, bool> predicate = null)
         {
             var items = _set.AsQueryable();
-            if(predicate != null)
+            if (predicate != null)
             {
                 items = items.Where(predicate).AsQueryable();
             }
@@ -95,7 +103,15 @@ namespace AutoMarket.DAL.Data
         /// <returns></returns>
         public async Task SaveAsync()
         {
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

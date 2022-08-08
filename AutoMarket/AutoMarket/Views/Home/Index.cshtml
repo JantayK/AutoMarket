@@ -6,3 +6,21 @@
     <h1 class="display-4">Добро пожаловать уважаемый!</h1>
     <p>Сайт пока всё ещё разрабатывается, поэтому просим подождать до 12-августа</p>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#liveToastBtn").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    error: function (result) {
+                        $("Алим красавчик")
+                    },
+                    success: function (result) {
+                        document.getElementById("liveToast")
+                    }
+                })
+            })
+        })
+    </script>
+}

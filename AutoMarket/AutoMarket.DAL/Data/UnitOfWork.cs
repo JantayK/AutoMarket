@@ -20,6 +20,7 @@ namespace AutoMarket.DAL.Data
         private Repository<CarCharacteristics> _carCharacteristicsRepository;
         private Repository<Generation> _generationRepository;
         private Repository<Comment> _commentRepository;
+        private Repository<ImageModel> _imagesRepository;
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -77,6 +78,15 @@ namespace AutoMarket.DAL.Data
                 if (_commentRepository == null)
                     _commentRepository = new Repository<Comment>(_context);
                 return _commentRepository;
+            }
+        }
+        public Repository<ImageModel> ImagesRepository
+        {
+            get
+            {
+                if (_imagesRepository == null)
+                    _imagesRepository = new Repository<ImageModel>(_context);
+                return _imagesRepository;
             }
         }
 

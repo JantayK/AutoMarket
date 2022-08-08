@@ -15,6 +15,7 @@ namespace AutoMarket.Data
         public DbSet<Generation> Generations { get; set; }
         public DbSet<CarCharacteristics> CarCharacteristics { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ImageModel> Images { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

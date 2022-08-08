@@ -1,0 +1,116 @@
+﻿@model GetBrandModelGenerationDto
+
+@{
+    ViewData["Title"] = "Выбор бренда";
+}
+
+<div class="shadow p-3 mb-5 bg-white border; container" style="width: 100%; border-radius: 15px;">
+    <h6 class="alert-success" style="font-size:xx-large; width:400px; border-radius:15px">- Добавление объявления</h6>
+    <a asp-action="ChooseVehicle" asp-controller="Advert">сбросить данные</a>
+    <hr />
+    <div id="mainDiv" class="form-row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div id="AdvertFormBrand" class="form-group" style="margin-right:20px">
+            <form class="form-group">
+                <label class="col-form-label">Брэнд</label> <br />
+                <select class="custom-select" id="selectBrandId" style="width:250px">
+                    <option disabled selected>Выберите брэнд</option>
+                    @foreach (var item in Model.GetBrandsDto)
+                    {
+                        <option value="@item.Id" class="form-control" id="optionId">@item.Name</option>
+                    }
+                </select>
+                <br />
+            </form>
+        </div>
+
+        <br />
+        <div id="AdvertFormModel" class="form-group">
+            <div class="form-row">
+                <form class="form-group" style="margin-right:20px">
+                    <label class="col-form-label">Модель</label> <br />
+                    <select class="custom-select" id="selectModelId" style="width:250px" disabled>
+                        <option disabled selected>Выберите модель</option>
+                        @foreach (var item in Model.GetModelsDto)
+                        {
+                            <option value="@item.Id" class="form-control">@item.Name</option>
+                        }
+                    </select>
+                    <br />
+                </form>
+            </div>
+        </div>
+        <div id="AdvertFormGeneration" class="form-group">
+            <form class="form-group">
+                <label class="col-form-label">Поколение</label> <br />
+                <select class="custom-select" id="selectGenerationId" style="width:250px" disabled>
+                    <option disabled selected>Выберите поколение</option>
+                    @foreach (var item in Model.GetGenerationsDto)
+                    {
+                        <option value="@item.Id" class="form-control">{ @item.BodyName } { @item.GenerationNumber } | { @item.StartYear - @item.EndYear }</option>
+                    }
+                </select>
+            </form>
+        </div>
+        <div class="btn-block">
+            <a class="btn btn-warning" asp-action="Index" asp-controller="Home">Главное меню</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#AdvertFormBrand").change(function (e) {
+                e.preventDefault();
+                let brandId = $("#selectBrandId").val();
+                let url = `/Advert/GetModelsByBrand/?id=${brandId}`;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    error: function (result) {
+                        $("Алим красавчик")
+                    },
+                    success: function (result) {
+                        $("#AdvertFormModel").html(result);
+                        $("#AdvertFormGeneration").html(onreset);
+                    }
+                })
+            })
+            $("#AdvertFormModel").change(function (e) {
+                e.preventDefault();
+                let modelId = $("#selectModelId").val();
+                let url = `/Advert/GetGenerationByModel/?id=${modelId}`;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    error: function (result) {
+                        $("Алим красавчик")
+                    },
+                    success: function (result) {
+                        $("#AdvertFormGeneration").html(result);
+                    }
+                })
+            })
+            $("#AdvertFormGeneration").change(function (e) {
+                e.preventDefault();
+                let brandId = $("#selectBrandId").val();
+                let modelId = $("#selectModelId").val();
+                let generationId = $("#selectGenerationId").val();
+                let url = `/Advert/Create/?BrandId=${brandId}&ModelId=${modelId}&GenerationId=${generationId}`;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    error: function (result) {
+                        $("Алим красавчик")
+                    },
+                    success: function (result) {
+                        $("#mainDiv").html(result);
+                    }
+                })
+            })
+        })
+    </script>
+}

@@ -1,0 +1,18 @@
+﻿@model GetBrandModelGenerationDto
+
+@{
+    ViewData["Title"] = "Выбор модели";
+}
+
+<div class="form-row">
+    <form class="form-group" style="margin-right:25px">
+        <label class="col-form-label">Модель</label> <br />
+        <select class="custom-select" id="selectModelId" style="width:250px">
+            <option disabled selected>Выберите модель</option>
+            @foreach (var item in Model.GetModelsDto)
+            {
+            <option value="@item.Id" class="form-control">@item.Name</option>
+            }
+        </select>
+    </form>
+</div>

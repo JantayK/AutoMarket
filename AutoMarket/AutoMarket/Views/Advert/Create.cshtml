@@ -1,0 +1,125 @@
+﻿@model AdvertDto
+
+@{
+    ViewData["Title"] = "Заполнение данных";
+}
+
+<div>
+    <h4 class="text-center" style="color:red; font-family:'Cascadia Code'">Пожалуйста, заполните все данные про автомобиль</h4>
+    <hr />
+    <form asp-action="Create" class="form-row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input asp-for="UserId" type="hidden" />
+        <input asp-for="BrandId" type="hidden" />
+        <input asp-for="ModelId" type="hidden" />
+        <input asp-for="GenerationId" type="hidden" />
+
+        <div style="width:180px; margin:15px">
+            <label asp-for="ManufacturerYear" class="control-label"></label>
+            <input asp-for="ManufacturerYear" class="form-control" required />
+            <span asp-validation-for="ManufacturerYear" class="text-danger"></span>
+
+            <label asp-for="EngineVolume" class="control-label" style="margin-top:15px"></label>
+            <input asp-for="EngineVolume" class="form-control" maxlength="3" required />
+            <span asp-validation-for="EngineVolume" class="text-danger"></span>
+
+            <div>
+                <label asp-for="BodyType" class="control-label" style="margin-top:15px"></label>
+                <select asp-for="BodyType"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<BodyType>()" required>
+                    <option disabled selected>Тип кузова</option>
+                </select>
+                <span asp-validation-for="BodyType" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="GearBox" class="control-label" style="margin-top:15px"></label>
+                <select asp-for="GearBox"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<GearBox>()" required>
+                    <option disabled selected>Тип коробки передач</option>
+                </select>
+                <span asp-validation-for="GearBox" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div style="width: 180px; margin: 15px">
+            <div>
+                <label asp-for="DriveType" class="control-label"></label>
+                <select asp-for="DriveType"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<DriveType>()" required>
+                    <option disabled selected>Тип привода</option>
+                </select>
+                <span asp-validation-for="DriveType" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="FuelType" class="control-label" style="margin-top:15px"></label>
+                <select asp-for="FuelType"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<FuelType>()" required>
+                    <option disabled selected>Тип топлива</option>
+                </select>
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Steer" class="control-label" style="margin-top:15px"></label>
+                <select asp-for="Steer"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Steer>()" required>
+                    <option disabled selected>Расположение руля</option>
+                </select>
+                <span asp-validation-for="Steer" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Mileage" class="control-label" style="margin-top:15px"></label>
+            <input asp-for="Mileage" class="form-control" required />
+            <span asp-validation-for="Mileage" class="text-danger"></span>
+
+        </div>
+
+        <div style="width: 180px; margin: 15px">
+            <div>
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Color>()" required>
+                    <option disabled selected>Цвет авто</option>
+                </select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Condition" class="control-label" style="margin-top:15px"></label>
+                <select asp-for="Condition"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Condition>()" required>
+                    <option disabled selected>Состояние авто</option>
+                </select>
+                <span asp-validation-for="Condition" class="text-danger"></span>
+            </div>
+        </div>
+        <div style="margin:15px">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control" style="width:400px; height:250px; resize:none"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-row" style="width:390px; margin: 15px">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" required />
+            <span asp-validation-for="Price" class="text-danger"></span>
+
+            <div class="btn-block" style="margin-top:15px">
+                <input type="submit" value="Добавить" class="btn btn-primary" /> |
+                <a class="btn btn-warning" asp-action="ChooseVehicle" asp-controller="Advert">Назад</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -85,7 +85,14 @@ namespace AutoMarket.DAL.Data
         /// </summary>
         public void Save()
         {
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private bool disposed = false;

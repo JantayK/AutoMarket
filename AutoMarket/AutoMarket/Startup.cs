@@ -1,6 +1,5 @@
 using AutoMarket.BLL.Profiles;
 using AutoMarket.BLL.Services;
-using AutoMarket.BLL.Services.ServiceInterfaces;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using AutoMarket.Data;
@@ -62,7 +61,6 @@ namespace AutoMarket
             services.AddTransient<ICarCharacteristicsService, CarCharacteristicsService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IImageService, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

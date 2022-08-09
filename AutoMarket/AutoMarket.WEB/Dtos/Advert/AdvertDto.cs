@@ -120,7 +120,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Описание об автомобиле")]
-        [Required(ErrorMessage = "Обязательное поле")]
         [DataType(DataType.Text)]
         [StringLength(2000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 2000 символов")]
         public string Description { get; set; }
@@ -128,7 +127,8 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// <summary>
         /// Фото машины 
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Фотографии обязательны")]
+        [Display(Name = "Фотографии авто")]
         public IFormFileCollection Images { get; set; }
 
         /// <summary>

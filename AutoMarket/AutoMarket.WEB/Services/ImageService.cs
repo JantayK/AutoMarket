@@ -1,25 +1,22 @@
 ﻿using AutoMarket.BLL.Dtos.Advert;
 using AutoMarket.BLL.Services.ServiceInterfaces;
 using AutoMarket.DAL.Data;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using AutoMarket.DAL.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AutoMarket.BLL.Services
 {
     public class ImageService : IImageService
     {
         private readonly UnitOfWork _uow;
-        private IWebHostEnvironment _appEnviroment;
+        private readonly IWebHostEnvironment _appEnvironment;
 
-        public ImageService(UnitOfWork uow)
+        public ImageService(UnitOfWork uow, IWebHostEnvironment appEnviroment)
         {
             _uow = uow;
+            _appEnvironment = appEnviroment;
         }
 
         public async Task AddFile(AdvertDto advertDto)
@@ -28,11 +25,11 @@ namespace AutoMarket.BLL.Services
             foreach (var uploadedFile in uploads)
             {
                 string path = "/Files/" + uploadedFile.FileName;
-                using (var fileStream = new FileStream(_appEnviroment.WebRootPath + path, FileMode.Create))
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }
-                ImageModel image = new ImageModel { Name = uploadedFile.FileName, Path = path };
+                ImageModel image = new ImageModel {Name = uploadedFile.FileName, Path = path };
                 await _uow.ImagesRepository.CreateAsync(image);
             }
             await _uow.ImagesRepository.SaveAsync();

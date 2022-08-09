@@ -109,7 +109,6 @@ namespace AutoMarket.DAL.Data
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }

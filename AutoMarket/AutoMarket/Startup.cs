@@ -1,5 +1,6 @@
 using AutoMarket.BLL.Profiles;
 using AutoMarket.BLL.Services;
+using AutoMarket.BLL.Services.ServiceInterfaces;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Models;
 using AutoMarket.Data;
@@ -36,7 +37,7 @@ namespace AutoMarket
                 options.User.AllowedUserNameCharacters = ".@qwertyuiopasdfghjklzxcvbnm" +
                                                          "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
                 options.SignIn.RequireConfirmedAccount = false;
-                options.Password.RequiredLength = 4;
+                options.Password.RequiredLength = 6;
                 options.Password.RequireDigit = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
@@ -61,6 +62,7 @@ namespace AutoMarket
             services.AddTransient<ICarCharacteristicsService, CarCharacteristicsService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IImageService, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

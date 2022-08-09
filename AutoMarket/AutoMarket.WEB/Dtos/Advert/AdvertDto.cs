@@ -37,8 +37,8 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Год выпуска")]
-        [Required(ErrorMessage = "Обязательное поле")]
-        [Range(1850, maximum: 2022, ErrorMessage = "Нельзя ввести год раньше 1850, больше 2022 года")]
+        [Required(ErrorMessage = "Заполните это поле")]
+        [Range(1850, maximum: 2022, ErrorMessage = "от 1850 до 2022 года")]
         public int ManufacturerYear { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип топлива")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public FuelType FuelType { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип кузова")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public BodyType BodyType { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип привода")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public DriveType DriveType { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Объем двигателя")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         [Range(0.6, maximum: 30.5, ErrorMessage = "Введите правильный объем (0.6 - 30.5)")]
         public double EngineVolume { get; set; }
 
@@ -79,7 +79,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип КПП")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public GearBox GearBox { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Расположение руля")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public Steer Steer { get; set; }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Цвет авто")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public Color Color { get; set; }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Состояние авто")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле")]
         public Condition Condition { get; set; }
 
         /// <summary>
@@ -111,8 +111,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Пробег в (км)")]
-        [Required(ErrorMessage = "Обязательное поле")]
-        //[MaxLength(7, Min= 1, ErrorMessage = "Минимум 1, максимум  7 цифр")]
+        [Required(ErrorMessage = "Заполните это поле")]
         [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
         public int Mileage { get; set; }
 
@@ -121,15 +120,15 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Описание об автомобиле")]
-        [Required(ErrorMessage = "Обязательное поле")]
         [DataType(DataType.Text)]
-        [StringLength(2000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 1000 символов")]
+        [StringLength(2000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 2000 символов")]
         public string Description { get; set; }
 
         /// <summary>
         /// Фото машины 
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Фотографии обязательны")]
+        [Display(Name = "Фотографии авто")]
         public IFormFileCollection Images { get; set; }
 
         /// <summary>
@@ -142,7 +141,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Цена в ($)")]
-        [Required(ErrorMessage = "Обязательное поле")]
+        [Required(ErrorMessage = "Заполните это поле ")]
         [Range(0, maximum: 9999999999, ErrorMessage = "Введите правильную сумму")]
         public Decimal Price { get; set; }
         public virtual BrandDto Brand { get; set; }

@@ -89,6 +89,11 @@ namespace AutoMarket.DAL.Models
         public DateTime DateOfAddition { get; set; }
 
         /// <summary>
+        /// Путь к фотографии
+        /// </summary>
+        public string Path { get; set; }
+
+        /// <summary>
         /// Цена для авто в $ (долларах)
         /// </summary>
         public Decimal Price { get; set; }
@@ -97,5 +102,6 @@ namespace AutoMarket.DAL.Models
         public virtual Generation Generation { get; set; }
         public virtual User User { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<ImageModel> ImageModels { get; set; }
     }
 }

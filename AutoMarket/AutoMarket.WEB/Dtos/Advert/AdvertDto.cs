@@ -4,6 +4,7 @@ using AutoMarket.BLL.Dtos.Generation;
 using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.BLL.Dtos.User;
 using AutoMarket.DAL.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -125,9 +126,14 @@ namespace AutoMarket.BLL.Dtos.Advert
         public string Description { get; set; }
 
         /// <summary>
+        /// Фото машины 
+        /// </summary>
+        [Required]
+        public IFormFileCollection Images { get; set; }
+
+        /// <summary>
         /// Дата добавления объявления на сайте
         /// </summary>
-
         public DateTime DateOfAddition { get; set; }
 
         /// <summary>

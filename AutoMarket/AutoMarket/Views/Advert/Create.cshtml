@@ -17,11 +17,11 @@
 
         <div style="width:180px; margin:15px">
             <label asp-for="ManufacturerYear" class="control-label"></label>
-            <input asp-for="ManufacturerYear" class="form-control" required />
+            <input asp-for="ManufacturerYear" class="form-control" type="number" required/>
             <span asp-validation-for="ManufacturerYear" class="text-danger"></span>
 
             <label asp-for="EngineVolume" class="control-label" style="margin-top:15px"></label>
-            <input asp-for="EngineVolume" class="form-control" maxlength="3" required />
+            <input asp-for="EngineVolume" class="form-control" type="number" maxlength="3" required />
             <span asp-validation-for="EngineVolume" class="text-danger"></span>
 
             <div>
@@ -109,7 +109,7 @@
 
         <div class="form-row" style="width:390px; margin: 15px">
             <label asp-for="Price" class="control-label"></label>
-            <input asp-for="Price" class="form-control" required />
+            <input asp-for="Price" class="form-control" type="number" required />
             <span asp-validation-for="Price" class="text-danger"></span>
 
             <div class="btn-block" style="margin-top:15px">

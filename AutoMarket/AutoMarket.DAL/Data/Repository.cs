@@ -40,7 +40,7 @@ namespace AutoMarket.DAL.Data
             {
                 await _set.AddAsync(model);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 throw;
             }

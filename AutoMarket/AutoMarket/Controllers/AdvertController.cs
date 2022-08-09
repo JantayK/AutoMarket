@@ -4,7 +4,6 @@ using AutoMarket.BLL.Dtos.Brand;
 using AutoMarket.BLL.Dtos.Generation;
 using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.BLL.Services;
-using AutoMarket.BLL.Services.ServiceInterfaces;
 using AutoMarket.DAL.Enums;
 using AutoMarket.DAL.Models;
 using AutoMarket.Data;
@@ -27,16 +26,14 @@ namespace AutoMarket.WEB.Controllers
         private readonly IModelService _modelService;
         private readonly IGenerationService _generationService;
         private readonly IMapper _mapper;
-        private readonly IImageService _imageService;
 
-        public AdvertController(IAdvertService advertService, IBrandService brandService, IModelService modelService, IGenerationService generationService, IMapper mapper, IImageService imageService)
+        public AdvertController(IAdvertService advertService, IBrandService brandService, IModelService modelService, IGenerationService generationService, IMapper mapper)
         {
             _advertService = advertService;
             _brandService = brandService;
             _modelService = modelService;
             _generationService = generationService;
             _mapper = mapper;
-            _imageService = imageService;
         }
 
         [HttpGet]
@@ -111,7 +108,6 @@ namespace AutoMarket.WEB.Controllers
                 advertDto.DateOfAddition = DateTime.Now;
 
                 await _advertService.CreateAsync(advertDto);
-                await _imageService.AddFile(advertDto); 
 
                 return RedirectToAction("Index", "Home");
             }

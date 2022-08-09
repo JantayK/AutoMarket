@@ -89,11 +89,6 @@ namespace AutoMarket.DAL.Models
         public DateTime DateOfAddition { get; set; }
 
         /// <summary>
-        /// Путь к фотографии
-        /// </summary>
-        public string Path { get; set; }
-
-        /// <summary>
         /// Цена для авто в $ (долларах)
         /// </summary>
         public Decimal Price { get; set; }

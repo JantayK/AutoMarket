@@ -3,8 +3,10 @@ using AutoMarket.BLL.Dtos.Advert;
 using AutoMarket.DAL.Data;
 using AutoMarket.DAL.Enums;
 using AutoMarket.DAL.Models;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +20,12 @@ namespace AutoMarket.BLL.Services
     {
         private readonly UnitOfWork _uow;
         private readonly IMapper _mapper;
-        public AdvertService(UnitOfWork uow, IMapper mapper)
+        private readonly IWebHostEnvironment _appEnvironment;
+        public AdvertService(UnitOfWork uow, IMapper mapper, IWebHostEnvironment appEnvironment)
         {
             _uow = uow;
             _mapper = mapper;
+            _appEnvironment = appEnvironment;
         }
 
         /// <summary>
@@ -31,11 +35,25 @@ namespace AutoMarket.BLL.Services
         /// <returns></returns>
         public async Task<AdvertDto> CreateAsync(AdvertDto advertDto)
         {
-            var advert = _mapper.Map<Advert>(advertDto);
-            var ad = await _uow.AdvertRepository.CreateAsync(advert);
-            await _uow.AdvertRepository.SaveAsync();
-            var result = _mapper.Map<AdvertDto>(ad);
-            return result;
+                var advert = _mapper.Map<Advert>(advertDto);
+                var ad = await _uow.AdvertRepository.CreateAsync(advert);
+                await _uow.AdvertRepository.SaveAsync();
+
+                var uploads = advertDto.Images;
+                foreach (var uploadedFile in uploads)
+                {
+                    string path = "/Files/" + uploadedFile.FileName;
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await uploadedFile.CopyToAsync(fileStream);
+                    }
+                    ImageModel image = new ImageModel { Name = uploadedFile.FileName, Path = path, AdvertId = ad.Id };
+                    await _uow.ImagesRepository.CreateAsync(image);
+                }
+                await _uow.ImagesRepository.SaveAsync();
+
+                var result = _mapper.Map<AdvertDto>(ad);
+                return result;
         }
 
         /// <summary>
@@ -135,7 +153,7 @@ namespace AutoMarket.BLL.Services
         /// </summary>
         /// <param name="driveType"></param>
         /// <returns></returns>
-        public async Task<List<AdvertDto>> GetByDriveTypeAsync(DriveType driveType)
+        public async Task<List<AdvertDto>> GetByDriveTypeAsync(DAL.Enums.DriveType driveType)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.DriveType == driveType).ToList();

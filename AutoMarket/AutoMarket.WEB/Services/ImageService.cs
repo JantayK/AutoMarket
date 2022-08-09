@@ -17,9 +17,10 @@ namespace AutoMarket.BLL.Services
         private readonly UnitOfWork _uow;
         private IWebHostEnvironment _appEnviroment;
 
-        public ImageService(UnitOfWork uow)
+        public ImageService(UnitOfWork uow, IWebHostEnvironment appEnviroment)
         {
             _uow = uow;
+            _appEnviroment = appEnviroment;
         }
 
         public async Task AddFile(AdvertDto advertDto)

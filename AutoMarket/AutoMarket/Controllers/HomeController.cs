@@ -20,12 +20,16 @@ namespace AutoMarket.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IImageService _imageService;
         private readonly IAdvertService _advertService;
+        private readonly IBrandService _brandService;
+        private readonly IModelService _modelService;
 
-        public HomeController(ILogger<HomeController> logger, IImageService imageService, IAdvertService advertService)
+        public HomeController(ILogger<HomeController> logger, IImageService imageService, IAdvertService advertService, IBrandService brandService, IModelService modelService)
         {
             _logger = logger;
             _imageService = imageService;
             _advertService = advertService;
+            _brandService = brandService;
+            _modelService = modelService;
         }
 
         [HttpGet]
@@ -33,22 +37,25 @@ namespace AutoMarket.Controllers
         {
             var advertsDto = await _advertService.GetAllAsync();
             var imageModelsDto = await _imageService.GetAllAsync();
+            var brands = await _brandService.GetAllAsync();
+            var models = await _modelService.GetAllAsync();
 
-            var listAdvertDtos = new List<AdvertDto>();
-            var listImageModelDtos = new List<ImageModelDto>();
-
-            listAdvertDtos.AddRange(advertsDto);
-            listImageModelDtos.AddRange(imageModelsDto);
-
-            var advertImageModelList = new GetAdvertImageModelDto()
+            foreach (var item in advertsDto)
             {
-                AdvertDtos = listAdvertDtos,
-                ImageModelDtos = listImageModelDtos
-            };
+                var result = imageModelsDto.FirstOrDefault(x => x.AdvertId == item.Id);
 
-            return View(advertImageModelList);
+                var brandName = brands.FirstOrDefault(x => x.Id == item.BrandId);
+                item.BrandName = brandName.Name;
+
+                var modelName = models.FirstOrDefault(x => x.Id == item.ModelId);
+                item.ModelName = modelName.Name;
+
+                item.PriceSom = item.Price * (decimal)82.48;
+                item.ImageModelDto = result;
+            }
+
+            return View(advertsDto);
         }
-
 
         public IActionResult Privacy()
         {

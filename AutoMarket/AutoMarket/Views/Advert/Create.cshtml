@@ -75,9 +75,14 @@
                 <span asp-validation-for="Steer" class="text-danger"></span>
             </div>
 
-            <label asp-for="Mileage" class="control-label" style="margin-top:15px"></label>
-            <input asp-for="Mileage" class="form-control" required />
-            <span asp-validation-for="Mileage" class="text-danger"></span>
+            <label asp-for="Mileage" class="control-label" style="margin-top:15px"></label><br />
+            <div class="input-group mb-3">
+                <input asp-for="Mileage" class="form-control" aria-label="Цена авто" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">км</span>
+                </div>
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
 
         </div>
 
@@ -103,7 +108,7 @@
         </div>
         <div style="margin:15px">
             <label asp-for="Description" class="control-label"></label>
-            <textarea asp-for="Description" class="form-control" style="width:400px; height:250px; resize:none"></textarea>
+            <textarea asp-for="Description" class="form-control" style="width:400px; height:290px; resize:none"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div style="width:390px; margin:15px">
@@ -112,9 +117,16 @@
                 <input class="form-control-file" type="file" name="Images" asp-for="Images" multiple required>
                 <span asp-validation-for="Images" class="text-danger"></span>
             </div>
+
             <br />
-            <label asp-for="Price" class="control-label"></label>
-            <input asp-for="Price" class="form-control" type="number" required />
+
+            <label asp-for="Price" class="control-label"></label><br />
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2">$</span>
+                </div>
+                <input asp-for="Price" class="form-control" placeholder="Цена" aria-label="Цена авто" aria-describedby="basic-addon2">
+            </div>
 
             <div class="btn-block" style="margin-top:15px">
                 <button type="submit" onclick="myFunction()" class="btn btn-primary">Добавить</button> |

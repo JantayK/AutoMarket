@@ -14,6 +14,7 @@ namespace AutoMarket.BLL.Dtos.GetDtos
     public class GetAdvertImageModelDto
     {
         public List<AdvertDto> AdvertDtos { get; set; }
-        public List<ImageModelDto> ImageModelDtos { get; set; }
+        public ImageModelDto ImageModelDto { get; set; }
+        public List<ImageModelDto> ImageModelByAdvertIdDtos { get; set; }
     }
 }

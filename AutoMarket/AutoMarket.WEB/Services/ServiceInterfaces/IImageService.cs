@@ -13,6 +13,7 @@ namespace AutoMarket.BLL.Services.ServiceInterfaces
     public interface IImageService
     {
         public Task<List<ImageModelDto>> GetAllByIdAsync(int advertId);
+        public Task<List<ImageModelDto>> GetAllAsync();
         public Task<ImageModelDto> GetById(int id);
         public Task<ImageModelDto> GetByAdvertId(int advertId);
     }

@@ -25,12 +25,13 @@ namespace AutoMarket.BLL.Services
         }
 
         /// <summary>
-        /// Получение всех изображений
+        /// Получение всех изображений одного объявления
         /// </summary>
         /// <returns></returns>
-        public async Task<List<ImageModelDto>> GetAllAsync()
+        public async Task<List<ImageModelDto>> GetAllByIdAsync(int advertId)
         {
-            var imageModels = await _uow.ImagesRepository.GetAsync();
+            var advert = await _uow.AdvertRepository.GetByIdAsync(advertId);
+            var imageModels = advert.ImageModels.Where(x => x.AdvertId == advertId).ToList();
             var result = _mapper.Map<List<ImageModelDto>>(imageModels);
             return result;
         }
@@ -43,6 +44,19 @@ namespace AutoMarket.BLL.Services
         public async Task<ImageModelDto> GetById(int id)
         {
             var imageModel = await _uow.ImagesRepository.GetByIdAsync(id);
+            var result = _mapper.Map<ImageModelDto>(imageModel);
+            return result;
+        }
+
+        /// <summary>
+        /// Получение одного изображения по Id объявления
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<ImageModelDto> GetByAdvertId(int advertId)
+        {
+            var advert = await _uow.AdvertRepository.GetByIdAsync(advertId);
+            var imageModel = advert.ImageModels.FirstOrDefault(x => x.AdvertId == advertId);
             var result = _mapper.Map<ImageModelDto>(imageModel);
             return result;
         }

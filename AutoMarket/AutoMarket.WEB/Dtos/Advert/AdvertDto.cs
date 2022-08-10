@@ -142,7 +142,7 @@ namespace AutoMarket.BLL.Dtos.Advert
 
         [Display(Name = "Цена в ($)")]
         [Required(ErrorMessage = "Заполните это поле ")]
-        [Range(0, maximum: 9999999999, ErrorMessage = "Введите правильную сумму")]
+        [Range(0, maximum: 99999999999, ErrorMessage = "Введите правильную сумму")]
         public Decimal Price { get; set; }
         public virtual BrandDto Brand { get; set; }
         public virtual ModelDto Model { get; set; }

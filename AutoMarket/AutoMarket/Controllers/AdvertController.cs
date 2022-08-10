@@ -108,7 +108,6 @@ namespace AutoMarket.WEB.Controllers
                 advertDto.DateOfAddition = DateTime.Now;
 
                 await _advertService.CreateAsync(advertDto);
-
                 return RedirectToAction("Index", "Home");
             }
             return View(advertDto);

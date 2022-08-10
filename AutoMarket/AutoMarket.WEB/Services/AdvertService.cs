@@ -281,6 +281,5 @@ namespace AutoMarket.BLL.Services
             var result = _mapper.Map<List<AdvertDto>>(filterredList);
             return result;
         }
-
     }
 }

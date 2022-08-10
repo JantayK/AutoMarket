@@ -4,7 +4,8 @@
     ViewData["Title"] = "Заполнение данных";
 }
 
-<div>
+<div class="shadow p-3 mb-5 bg-white border; container" style="width: 100%; border-radius: 15px">
+
     <h4 class="text-center" style="color:red; font-family:'Microsoft Sans Serif'">Пожалуйста, заполните все данные про автомобиль</h4>
     <hr />
     <form asp-action="Create" class="form-row" enctype="multipart/form-data">
@@ -21,7 +22,7 @@
             <span asp-validation-for="ManufacturerYear" class="text-danger"></span>
 
             <label asp-for="EngineVolume" class="control-label" style="margin-top:15px"></label>
-            <input asp-for="EngineVolume" class="form-control" type="number" maxlength="4" required />
+            <input asp-for="EngineVolume" class="form-control" maxlength="4" required />
             <span asp-validation-for="EngineVolume" class="text-danger"></span>
 
             <div>
@@ -105,20 +106,18 @@
             <textarea asp-for="Description" class="form-control" style="width:400px; height:250px; resize:none"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <hr />
-
-
-        <label asp-for="Images" class="custom-file-input">Upload Your File</label>
-        <br />
-        <input type="file" name="Images" asp-for="Images" multiple required>
-        <span asp-validation-for="Images" class="text-danger"></span>
-
-        <div class="form-row" style="width:390px">
+        <div style="width:390px; margin:15px">
+            <div>
+                <label asp-for="Images" class="control-label"></label>
+                <input class="form-control-file" type="file" name="Images" asp-for="Images" multiple required>
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
+            <br />
             <label asp-for="Price" class="control-label"></label>
             <input asp-for="Price" class="form-control" type="number" required />
 
             <div class="btn-block" style="margin-top:15px">
-                <input type="submit" value="Добавить" class="btn btn-primary" /> |
+                <button type="submit" onclick="myFunction()" class="btn btn-primary">Добавить</button> |
                 <a class="btn btn-warning" asp-action="ChooseVehicle" asp-controller="Advert">Назад</a>
             </div>
         </div>

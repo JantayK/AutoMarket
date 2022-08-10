@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AutoMarket.BLL.Dtos.Advert
 {
+    /// <summary>
+    /// Dto модель получения Марок, Моделей и Поколений
+    /// </summary>
     public class GetBrandModelGenerationDto
     {
         public List<BrandDto> GetBrandsDto { get; set; }

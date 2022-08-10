@@ -95,14 +95,7 @@ namespace AutoMarket.DAL.Data
         /// </summary>
         public void Save()
         {
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.SaveChanges();
         }
 
         private bool disposed = false;
@@ -124,5 +117,5 @@ namespace AutoMarket.DAL.Data
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-    }  
+    }
 }

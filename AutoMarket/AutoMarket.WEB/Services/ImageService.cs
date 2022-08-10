@@ -37,6 +37,17 @@ namespace AutoMarket.BLL.Services
         }
 
         /// <summary>
+        /// Получение всех изображений 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<ImageModelDto>> GetAllAsync()
+        {
+            var imageModels = await _uow.ImagesRepository.GetAsync();
+            var result = _mapper.Map<List<ImageModelDto>>(imageModels);
+            return result;
+        }
+
+        /// <summary>
         /// Получение одного изображения по Id
         /// </summary>
         /// <param name="id"></param>

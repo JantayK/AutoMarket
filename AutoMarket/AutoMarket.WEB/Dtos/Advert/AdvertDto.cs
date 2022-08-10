@@ -1,6 +1,7 @@
 ﻿using AutoMarket.BLL.Dtos.Brand;
 using AutoMarket.BLL.Dtos.Comment;
 using AutoMarket.BLL.Dtos.Generation;
+using AutoMarket.BLL.Dtos.ImageModel;
 using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.BLL.Dtos.User;
 using AutoMarket.DAL.Enums;
@@ -19,6 +20,8 @@ namespace AutoMarket.BLL.Dtos.Advert
     /// </summary>
     public class AdvertDto
     {
+        public int Id { get; set; }
+
         [ForeignKey("User")]
         public string UserId { get; set; }
 
@@ -110,7 +113,7 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// Пробег авто
         /// </summary>
 
-        [Display(Name = "Пробег в (км)")]
+        [Display(Name = "Пробег")]
         [Required(ErrorMessage = "Заполните это поле")]
         [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
         public int Mileage { get; set; }
@@ -140,14 +143,19 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// Цена для авто в $ (долларах)
         /// </summary>
 
-        [Display(Name = "Цена в ($)")]
+        [Display(Name = "Цена")]
         [Required(ErrorMessage = "Заполните это поле ")]
         [Range(0, maximum: 99999999999, ErrorMessage = "Введите правильную сумму")]
         public Decimal Price { get; set; }
+        public Decimal PriceSom { get; set; }
+        public string BrandName { get; set; }
+        public string ModelName { get; set; }
         public virtual BrandDto Brand { get; set; }
         public virtual ModelDto Model { get; set; }
         public virtual GenerationDto Generation { get; set; }
         public virtual UserDto User { get; set; }
         public ICollection<CommentDto> Comments { get; set; }
+        public ICollection<ImageModelDto> ImageModelDtoList { get; set; }
+        public ImageModelDto ImageModelDto { get; set; }
     }
 }

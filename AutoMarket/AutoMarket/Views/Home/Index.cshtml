@@ -1,4 +1,4 @@
-﻿@model GetAdvertImageModelDto
+﻿@model List<AdvertDto>
 @{
     ViewData["Title"] = "Главная страница";
 }
@@ -8,8 +8,20 @@
     <p>Сайт пока всё ещё разрабатывается, поэтому просим подождать до 12-августа</p>
 </div>
 
-<h3>Все файлы</h3>
-@foreach (var f in Model.ImageModelDtos)
+@foreach (var item in Model)
 {
-    <p><img src="@Url.Content(f.Path)"></p>
+<div class="row">
+    <div class="card text-white bg-light mb-3" style="max-width: 15rem; margin:10px; border-radius:10px">
+        <img src="@item.ImageModelDto.Path" alt="Card image cap" style="max-width:12rem; max-height:8rem; margin-left:22px; margin-top:15px; border-radius:10px">
+        
+        <div class="card-body">
+            <h5 class="card-title" style="color:black">@item.Price $</h5>
+            <h6 class="card-title" style="color:dimgray">@item.PriceSom сом</h6>
+            <h5 class="card-title" style="color:black">@item.BrandName @item.ModelName @item.ManufacturerYear</h5>
+            <hr />
+            <p class="card-text" style="color:black">@item.ManufacturerYear г, @item.EngineVolume л, @item.GearBox, @item.BodyType, @item.FuelType, руль @item.Steer, @item.Mileage км</p>
+            <a href="#" class="btn btn-primary">Посмотреть</a>
+        </div>
+    </div>
+</div>
 }

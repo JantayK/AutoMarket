@@ -17,11 +17,11 @@ namespace AutoMarket.BLL.Services
         public void Edit(AdvertDto advertDto);
         public void Delete(AdvertDto advertDto);
         public Task<List<AdvertDto>> GetAllAsync();
-        public Task<List<AdvertDto>> GetByBrandAsync(string name);
-        public Task<List<AdvertDto>> GetByModelAsync(string name);
+        public Task<List<AdvertDto>> GetByBrandAsync(int brandId);
+        public Task<List<AdvertDto>> GetByModelAsync(int modelId);
         public Task<List<AdvertDto>> GetByGenerationAsync(int generationId);
         public Task<List<AdvertDto>> GetByYearAsync(int yearFrom, int till);
-        public Task<List<AdvertDto>> GetByPriceAsync(decimal priceFrom, int till);
+        public Task<List<AdvertDto>> GetByPriceAsync(decimal priceFrom, decimal till);
         public Task<List<AdvertDto>> GetByGearBoxAsync(GearBox type);
         public Task<List<AdvertDto>> GetByColorAsync(Color color);
         public Task<List<AdvertDto>> GetByEngineVolumeAsync(double engineVolFrom, double till);

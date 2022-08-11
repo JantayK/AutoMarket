@@ -1,27 +1,281 @@
-﻿@model List<AdvertDto>
+﻿@model FullAdvertDtoModel
 @{
     ViewData["Title"] = "Главная страница";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Добро пожаловать уважаемый!</h1>
-    <p>Сайт пока всё ещё разрабатывается, поэтому просим подождать до 12-августа</p>
+<div class="shadow p-3 mb-4 bg-white border; container" style="width: 100%; border-radius: 15px">
+    <div class="text-center">
+        <h1 class="text-center" style="font-family:Corbel">Добро пожаловать в Auto Market!</h1>
+        <h5 class="modal-title" style="color:dodgerblue">просматривайте, и находите свою машину мечты!</h5>
+    </div>
 </div>
-
-@foreach (var item in Model)
-{
-<div class="row">
-    <div class="card text-white bg-light mb-3" style="max-width: 15rem; margin:10px; border-radius:10px">
-        <img src="@item.ImageModelDto.Path" alt="Card image cap" style="max-width:12rem; max-height:8rem; margin-left:22px; margin-top:15px; border-radius:10px">
-        
-        <div class="card-body">
-            <h5 class="card-title" style="color:black">@item.Price $</h5>
-            <h6 class="card-title" style="color:dimgray">@item.PriceSom сом</h6>
-            <h5 class="card-title" style="color:black">@item.BrandName @item.ModelName @item.ManufacturerYear</h5>
-            <hr />
-            <p class="card-text" style="color:black">@item.ManufacturerYear г, @item.EngineVolume л, @item.GearBox, @item.BodyType, @item.FuelType, руль @item.Steer, @item.Mileage км</p>
-            <a href="#" class="btn btn-primary">Посмотреть</a>
+<div id="FilterFormAdvert" class="shadow p-3 mb-4 bg-white border; container" style="width: 100%; border-radius: 15px">
+    <h1 style="font-family:Corbel">Удобный фильтр</h1>
+    <a asp-action="Index" asp-controller="Home">сбросить данные</a>
+    <hr />
+    <div id="filterForm" class="form-row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div id="AdvertFormBrand" class="form-group" style="margin-right:15px; margin-left:35px">
+            <form class="form-group">
+                <select class="custom-select" id="selectBrandId" style="width:240px; border-radius:15px">
+                    <option disabled selected>Выберите брэнд</option>
+                    @foreach (var item in Model.GetBrandModelGeneration.GetBrandsDto)
+                    {
+                        <option value="@item.Id" class="form-control" id="optionId">@item.Name</option>
+                    }
+                </select>
+                <br />
+            </form>
+        </div>
+        <br />
+        <div id="AdvertFormModel" class="form-group">
+            <div class="form-row">
+                <form class="form-group" style="margin-right:25px">
+                    <select class="custom-select" id="selectModelId" style="width: 240px; border-radius: 15px" disabled>
+                        <option disabled selected>Выберите модель</option>
+                        @foreach (var item in Model.GetBrandModelGeneration.GetModelsDto)
+                        {
+                            <option value="@item.Id" class="form-control">@item.Name</option>
+                        }
+                    </select>
+                    <br />
+                </form>
+            </div>
+        </div>
+        <div id="AdvertFormGeneration" class="form-group">
+            <form class="form-group" style="margin-right:15px">
+                <select class="custom-select" id="selectGenerationId" style="width: 240px; border-radius: 15px" disabled>
+                    <option disabled selected>Выберите поколение</option>
+                    @foreach (var item in Model.GetBrandModelGeneration.GetGenerationsDto)
+                    {
+                        <option value="@item.Id" class="form-control">@item.Model.Name [ @item.BodyName ] [ @item.GenerationNumber ] | [ @item.StartYear - @item.EndYear ]</option>
+                    }
+                </select>
+            </form>
+        </div>
+        <div id="bodyNameForm" class="form-group">
+            <form class="form-group" style="margin-right:25px">
+                <select asp-for="BodyType" id="bodyNameId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<BodyType>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Тип кузова</option>
+                </select>
+                <span asp-validation-for="Condition" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="yearForm" class="form-group" style="margin-left:35px">
+            <form class="form-group" style="margin-right:12px">
+                <div class="input-group" style="width:495px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="" style="border-bottom-left-radius:15px; border-top-left-radius:15px">Год выпуска</span>
+                    </div>
+                    <input id="yearFromId" asp-for="ManufacturerYearFrom" type="number" min="1850" max="2022" value="" class="form-control" placeholder="от">
+                    <input id="yearTillId" asp-for="ManufacturerYearTill" type="number" min="1851" max="2022" value="" class="form-control" style="border-top-right-radius:15px; border-bottom-right-radius:15px" placeholder="до">
+                </div>
+                <span asp-validation-for="ManufacturerYear" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="MiliageForm" class="form-group" style="margin-right:15px; margin-left:5px">
+            <form class="form-group" style="margin-right:20px">
+                <div class="input-group" style="width:495px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="" style="border-bottom-left-radius:15px; border-top-left-radius:15px">Пробег</span>
+                    </div>
+                    <input asp-for="MileageFrom" id="MileageFromId" type="number" min="0" max="9999998" value="" class="form-control" placeholder="от">
+                    <input asp-for="MileageTill" id="MileageTillId" type="number" min="0" max="9999999" value="" class="form-control" style="border-top-right-radius:15px; border-bottom-right-radius:15px" placeholder="до">
+                </div>
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="GearBoxForm" class="form-group">
+            <form class="form-group" style="margin-left:35px; margin-right:15px">
+                <select asp-for="GearBox" id="GearBoxId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<GearBox>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Тип КПП</option>
+                </select>
+                <span asp-validation-for="GearBox" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="DriveTypeForm" class="form-group">
+            <form class="form-group" style="margin-right:15px">
+                <select asp-for="DriveType" id="DriveTypeId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<DriveType>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Тип привода</option>
+                </select>
+                <span asp-validation-for="DriveType" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="FueltypeForm" class="form-group">
+            <form class="form-group" style="margin-left:5px; margin-right:12px">
+                <select asp-for="FuelType" id="fuelTypeId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<FuelType>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Тип топлива</option>
+                </select>
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="ColorForm" class="form-group">
+            <form class="form-group" style="margin-right:15px">
+                <select asp-for="Color" id="colorId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Color>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Цвет авто</option>
+                </select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="SteerForm" class="form-group">
+            <form class="form-group" style="margin-left:35px; margin-right: 10px">
+                <select asp-for="Steer" id="steerId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Steer>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Руль</option>
+                </select>
+                <span asp-validation-for="Steer" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="EngineVolumeForm" class="form-group" style="margin-right:2px; margin-left:5px">
+            <form class="form-group" style="margin-right:20px">
+                <div class="input-group" style="width:240px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="" style="border-bottom-left-radius:15px; border-top-left-radius:15px">Объем</span>
+                    </div>
+                    <input id="engineVolumeFromId" asp-for="EngineVolumeFrom" type="number" step="0.1" value="" class="form-control" placeholder="от">
+                    <input id="engineVolumeTillId" asp-for="EngineVolumeTill" type="number" step="0.1" value="" class="form-control" style="border-top-right-radius:15px; border-bottom-right-radius:15px" placeholder="до">
+                </div>
+                <span asp-validation-for="EngineVolume" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="ConditionForm" class="form-group">
+            <form class="form-group" style="margin-right: 10px">
+                <select asp-for="Condition" id="conditionId"
+                        class="custom-select"
+                        asp-items="Html.GetEnumSelectList<Condition>()" style="width: 240px; border-radius: 15px">
+                    <option disabled selected>Состояние</option>
+                </select>
+                <span asp-validation-for="Condition" class="text-danger"></span>
+            </form>
+        </div>
+        <div id="PriceForm" class="form-group" style="margin-right:2px; margin-left:5px">
+            <form class="form-group" style="margin-right:20px">
+                <div class="input-group" style="width:235px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="" style="border-bottom-left-radius:15px; border-top-left-radius:15px">Цена</span>
+                    </div>
+                    <input id="PriceFromId" asp-for="PriceFrom" type="number" min="0" max="99999999998" value="" class="form-control" placeholder="от">
+                    <input id="PriceTillId" asp-for="PriceTill" type="number" min="0" max="99999999999" value="" class="form-control" style="border-top-right-radius:15px; border-bottom-right-radius:15px" placeholder="до">
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </form>
+        </div>
+        <div class="btn-block" style="margin-left:89%">
+            <button id="searchButton" type="submit" class="btn btn-outline-success" style="border-bottom-right-radius:15px; border-top-left-radius:15px">Поиск</button>
         </div>
     </div>
 </div>
+<div class="text-center">
+    <button id="hideFilterButton" class="btn btn-warning" style="border-bottom-right-radius:15px; border-top-left-radius:15px; font-family:'Microsoft Sans Serif'">Убрать/Показать фильтр</button>
+</div>
+<br />
+
+<div class="shadow p-3 mb-5 bg-white border; container" style="width: 100%; border-radius: 15px">
+    <div id="advertsList" class="row" style="margin:15px">
+        @foreach (var item in Model.AdvertDtos)
+        {
+            <div class="card text-white bg-light mb-3" style="max-width: 15rem; margin:10px; border-radius:15px; border-color:darkgray; border-width:1px">
+                <img src="@item.ImageModelDto.Path" style="max-width: 13.5rem; max-height: 10rem; margin-left: 11px; margin-top: 10px; border-radius: 15px ">
+                <div class="card-body">
+                    <strong class="card-title; text-dark">$ @((double)item.Price)</strong>
+                    <p class="card-text" style="color:dimgray">@((int)item.PriceSom) сом</p>
+                    <h5 class="card-title" style="color:dodgerblue">@item.BrandName @item.ModelName @item.ManufacturerYear</h5>
+                    <hr />
+                    <p class="card-text" style="color:black">@item.ManufacturerYear г, @item.EngineVolume л, @item.GearBox, @item.BodyType, @item.FuelType, руль @item.Steer, @item.Mileage км</p>
+                    <a href="#" class="btn btn-info">Посмотреть</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function showFormModel() {
+                $("#AdvertFormModel").show();
+            }
+            function showFormGeneration() {
+                $("#AdvertFormGeneration").show();
+            }
+            function hideFormGeneration() {
+                $("#AdvertFormGeneration").hide();
+            }
+            function hideFormFilter() {
+                $("#filterForm").hide();
+            }
+            function showFormFilter() {
+                $("#filterForm").show();
+            }
+            $("#AdvertFormBrand").change(function (e) {
+                e.preventDefault();
+                let brandId = $("#selectBrandId").val();
+                let url = `/Home/GetModelsByBrand/?id=${brandId}`;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    beforeSend: hideFormGeneration,
+                    complete: showFormModel,
+                    error: function (result) {
+                        $("Error has occured")
+                    },
+                    success: function (result) {
+                        $("#AdvertFormModel").html(result);
+                    }
+                })
+            })
+            $("#AdvertFormModel").change(function (e) {
+                e.preventDefault();
+                let modelId = $("#selectModelId").val();
+                let url = `/Home/GetGenerationByModel/?id=${modelId}`;
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    beforeSend: hideFormGeneration,
+                    complete: showFormGeneration,
+                    error: function (result) {
+                        $("Error has occured")
+                    },
+                    success: function (result) {
+                        $("#AdvertFormGeneration").html(result);
+                    }
+                })
+            })
+            $("#hideFilterButton").click(function (e) {
+                $("#FilterForm").is(":visible")
+                    ? hideFormFilter()
+                    : showFormFilter();
+            })
+            @*$("#FilterFormAdvert").submit(function (e) {
+                e.preventDefault();
+                let url = '@Url.Action("FilterredAdverts")';
+                let data = $("#FilterFormAdvert").serialize();
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: data,
+                    error: function (result) {
+                        $("#FilterFormAdvert")[0].reset();
+                        alert("error");
+                    },
+                    success: function (result) {
+                        $("#FilterFormAdvert")[0].reset();
+                        $("#advertsList").html(result);
+                    }
+                })
+            })*@
+        })
+    </script>
 }

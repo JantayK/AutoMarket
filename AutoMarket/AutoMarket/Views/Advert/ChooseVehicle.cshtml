@@ -10,11 +10,10 @@
     <hr />
     <div id="mainDiv" class="form-row">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
         <div id="AdvertFormBrand" class="form-group" style="margin-right:20px">
             <form class="form-group">
                 <label class="col-form-label">Брэнд</label> <br />
-                <select class="custom-select" id="selectBrandId" style="width:250px">
+                <select class="custom-select" id="selectBrandId" style="width: 250px; border-radius: 15px">
                     <option disabled selected>Выберите брэнд</option>
                     @foreach (var item in Model.GetBrandsDto)
                     {
@@ -26,11 +25,11 @@
         </div>
 
         <br />
-        <div id="AdvertFormModel" class="form-group">
+        <div id="AdvertFormModel" class="form-group" style="display:none">
             <div class="form-row">
                 <form class="form-group" style="margin-right:20px">
                     <label class="col-form-label">Модель</label> <br />
-                    <select class="custom-select" id="selectModelId" style="width:250px" disabled>
+                    <select class="custom-select" id="selectModelId" style="width: 250px; border-radius: 15px">
                         <option disabled selected>Выберите модель</option>
                         @foreach (var item in Model.GetModelsDto)
                         {
@@ -41,10 +40,10 @@
                 </form>
             </div>
         </div>
-        <div id="AdvertFormGeneration" class="form-group">
+        <div id="AdvertFormGeneration" class="form-group" style="display:none">
             <form class="form-group">
                 <label class="col-form-label">Поколение</label> <br />
-                <select class="custom-select" id="selectGenerationId" style="width:250px" disabled>
+                <select class="custom-select" id="selectGenerationId" style="width: 250px; border-radius: 15px">
                     <option disabled selected>Выберите поколение</option>
                     @foreach (var item in Model.GetGenerationsDto)
                     {
@@ -54,7 +53,7 @@
             </form>
         </div>
         <div class="btn-block">
-            <a class="btn btn-warning" asp-action="Index" asp-controller="Home">Главное меню</a>
+            <a class="btn btn-warning" style="border-bottom-right-radius:15px; border-top-left-radius:15px"  asp-action="Index" asp-controller="Home">Главное меню</a>
         </div>
     </div>
 </div>
@@ -63,6 +62,18 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
         $(document).ready(function () {
+            function showFormModel() {
+                $("#AdvertFormModel").show();
+            }
+            function showFormGeneration() {
+                $("#AdvertFormGeneration").show();
+            }
+            function hideFormModel() {
+                $("#AdvertFormModel").hide();
+            }
+            function hideFormGeneration() {
+                $("#AdvertFormGeneration").hide();
+            }
             $("#AdvertFormBrand").change(function (e) {
                 e.preventDefault();
                 let brandId = $("#selectBrandId").val();
@@ -70,12 +81,13 @@
                 $.ajax({
                     type: "GET",
                     url: url,
+                    beforeSend: hideFormGeneration,
+                    complete: showFormModel,
                     error: function (result) {
-                        $("Алим красавчик")
+                        $("Error has occured")
                     },
                     success: function (result) {
                         $("#AdvertFormModel").html(result);
-                        $("#AdvertFormGeneration").html(onreset);
                     }
                 })
             })
@@ -86,8 +98,10 @@
                 $.ajax({
                     type: "GET",
                     url: url,
+                    beforeSend: hideFormGeneration,
+                    complete: showFormGeneration,
                     error: function (result) {
-                        $("Алим красавчик")
+                        $("Error has occured")
                     },
                     success: function (result) {
                         $("#AdvertFormGeneration").html(result);
@@ -104,7 +118,7 @@
                     type: "GET",
                     url: url,
                     error: function (result) {
-                        $("Алим красавчик")
+                        $("Error has occured")
                     },
                     success: function (result) {
                         $("#mainDiv").html(result);

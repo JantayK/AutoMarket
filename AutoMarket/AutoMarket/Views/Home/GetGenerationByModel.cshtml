@@ -1,0 +1,20 @@
+﻿@model GetBrandModelGenerationDto
+
+@{
+    ViewData["Title"] = "Выбор поколения";
+}
+
+<div class="form-row">
+    <div id="AdvertFormGeneration">
+        <form class="form-group" style="margin-right:20px;">
+            <select class="custom-select" id="selectGenerationId" style="width: 240px; border-radius: 15px">
+
+                <option disabled selected>Выберите поколение</option>
+                @foreach (var item in Model.GetGenerationsDto)
+                {
+                    <option value="@item.Id" class="form-control">[ @item.BodyName ] [ @item.GenerationNumber ] | [ @item.StartYear - @item.EndYear ]</option>
+                }
+            </select>
+        </form>
+    </div>
+</div>

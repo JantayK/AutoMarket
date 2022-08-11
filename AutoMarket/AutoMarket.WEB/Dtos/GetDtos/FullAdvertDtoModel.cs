@@ -1,24 +1,22 @@
-﻿using AutoMarket.BLL.Dtos.Brand;
+﻿using AutoMarket.BLL.Dtos.Advert;
+using AutoMarket.BLL.Dtos.Brand;
 using AutoMarket.BLL.Dtos.Comment;
 using AutoMarket.BLL.Dtos.Generation;
 using AutoMarket.BLL.Dtos.ImageModel;
 using AutoMarket.BLL.Dtos.Model;
 using AutoMarket.BLL.Dtos.User;
 using AutoMarket.DAL.Enums;
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoMarket.BLL.Dtos.Advert
+namespace AutoMarket.BLL.Dtos.GetDtos
 {
-    /// <summary>
-    /// Dto модель для Объявления
-    /// </summary>
-    public class AdvertDto
+    public class FullAdvertDtoModel
     {
         public int Id { get; set; }
 
@@ -34,22 +32,33 @@ namespace AutoMarket.BLL.Dtos.Advert
         [ForeignKey("Generation")]
         public int GenerationId { get; set; }
 
-
         /// <summary>
         /// Год выпуска авто
         /// </summary>
 
         [Display(Name = "Год выпуска")]
-        [Required(ErrorMessage = "Заполните это поле")]
-        [Range(1850, maximum: 2022, ErrorMessage = "от 1850 до 2022 года")]
         public int ManufacturerYear { get; set; }
+
+        /// <summary>
+        /// Год выпуска авто ОТ
+        /// </summary>
+
+        [Display(Name = "Год выпуска от:")]
+        [Range(1850, maximum: 2022, ErrorMessage = "от 1850 до 2022 года")]
+        public int ManufacturerYearFrom { get; set; }
+
+        /// <summary>
+        /// Год выпуска авто ДО
+        /// </summary>
+        [Display(Name = "Год выпуска от:")]
+        [Range(1850, maximum: 2022, ErrorMessage = "до 2022 года")]
+        public int ManufacturerYearTill { get; set; }
 
         /// <summary>
         /// Тип топлива авто
         /// </summary>
 
         [Display(Name = "Тип топлива")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public FuelType FuelType { get; set; }
 
         /// <summary>
@@ -57,7 +66,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип кузова")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public BodyType BodyType { get; set; }
 
         /// <summary>
@@ -65,7 +73,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Тип привода")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public DriveType DriveType { get; set; }
 
         /// <summary>
@@ -73,16 +80,29 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Объем двигателя")]
-        [Required(ErrorMessage = "Заполните это поле")]
-        [Range(0.5, maximum: 10.0, ErrorMessage = "Введите правильный объем (0.5 - 10.0)")]
+        [Range(0.5, maximum: 10.0, ErrorMessage = "Введите правильный объем (от 0.5)")]
         public double EngineVolume { get; set; }
+
+        /// <summary>
+        /// Объем двигателя ОТ
+        /// </summary>
+
+        [Display(Name = "Объем двигателя от:")]
+        [Range(0.5, maximum: 10.0, ErrorMessage = "Введите правильный объем (от 0.5)")]
+        public double EngineVolumeFrom { get; set; }
+
+        /// <summary>
+        /// Объем двигателя ДО
+        /// </summary>
+        [Display(Name = "Объем двигателя до:")]
+        [Range(0.5, maximum: 10.0, ErrorMessage = "Введите правильный объем (до 10.0)")]
+        public double EngineVolumeTill { get; set; }
 
         /// <summary>
         /// Тип коробки передая
         /// </summary>
 
         [Display(Name = "Тип КПП")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public GearBox GearBox { get; set; }
 
         /// <summary>
@@ -90,7 +110,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Расположение руля")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public Steer Steer { get; set; }
 
         /// <summary>
@@ -98,7 +117,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Цвет авто")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public Color Color { get; set; }
 
         /// <summary>
@@ -106,7 +124,6 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Состояние авто")]
-        [Required(ErrorMessage = "Заполните это поле")]
         public Condition Condition { get; set; }
 
         /// <summary>
@@ -114,48 +131,65 @@ namespace AutoMarket.BLL.Dtos.Advert
         /// </summary>
 
         [Display(Name = "Пробег")]
-        [Required(ErrorMessage = "Заполните это поле")]
-        [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
         public int Mileage { get; set; }
 
         /// <summary>
-        /// Дополнительное описание для объявления
+        /// Пробег авто ОТ
         /// </summary>
-
-        [Display(Name = "Описание об автомобиле")]
-        [DataType(DataType.Text)]
-        [StringLength(2000, MinimumLength = 2, ErrorMessage = "Минимум 2, максимум 2000 символов")]
-        public string Description { get; set; }
+        [Display(Name = "Пробег от:")]
+        [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
+        public int MileageFrom { get; set; }
 
         /// <summary>
-        /// Фото машины 
+        /// Пробег авто ДО
         /// </summary>
-        [Required(ErrorMessage = "Фотографии обязательны")]
-        [Display(Name = "Фотографии авто")]
-        public IFormFileCollection Images { get; set; }
+
+        [Display(Name = "Пробег до:")]
+        [Range(0, maximum: 9999999, ErrorMessage = "Введите правильный пробег")]
+        public int MileageTill { get; set; }
 
         /// <summary>
-        /// Дата добавления объявления на сайте
-        /// </summary>
-        public DateTime DateOfAddition { get; set; }
-
-        /// <summary>
-        /// Цена для авто в $ (долларах)
+        /// Цена для авто ОТ
         /// </summary>
 
-        [Display(Name = "Цена")]
-        [Required(ErrorMessage = "Заполните это поле ")]
+        [Display(Name = "Цена от:")]
         [Range(0, maximum: 99999999999, ErrorMessage = "Введите правильную сумму")]
+        public Decimal PriceFrom { get; set; }
+
+        /// <summary>
+        /// Цена для авто ДО
+        /// </summary>
+
+        [Display(Name = "Цена до:")]
+        [Range(0, maximum: 99999999999, ErrorMessage = "Введите правильную сумму")]
+        public Decimal PriceTill { get; set; }
+        public virtual GetBrandModelGenerationDto GetBrandModelGeneration {get;set;}
+
+        /// <summary>
+        /// Цена для авто в долларах
+        /// </summary>
+        [Display(Name = "Цена")]
         public Decimal Price { get; set; }
+
+        /// <summary>
+        /// Цена для авто в сомах
+        /// </summary>
         public Decimal PriceSom { get; set; }
+
+        /// <summary>
+        /// Название брэнда
+        /// </summary>
         public string BrandName { get; set; }
+
+        /// <summary>
+        /// Название модели
+        /// </summary>
         public string ModelName { get; set; }
         public virtual BrandDto Brand { get; set; }
         public virtual ModelDto Model { get; set; }
         public virtual GenerationDto Generation { get; set; }
-        public virtual UserDto User { get; set; }
-        public ICollection<CommentDto> Comments { get; set; }
         public ICollection<ImageModelDto> ImageModelDtoList { get; set; }
         public ImageModelDto ImageModelDto { get; set; }
+        public List<AdvertDto> AdvertDtos { get; set; }
     }
 }

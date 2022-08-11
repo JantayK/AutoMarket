@@ -110,12 +110,12 @@ namespace AutoMarket.BLL.Services
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<List<AdvertDto>> GetByBrandAsync(string name)
+        public async Task<List<AdvertDto>> GetByBrandAsync(int id)
         {
-            if (name != null)
+            if (id != 0)
             {
                 var list = await _uow.AdvertRepository.GetAsync();
-                var filterredList = list.Where(x => x.Brand.Name == name).ToList();
+                var filterredList = list.Where(x => x.Brand.Id == id).ToList();
                 var result = _mapper.Map<List<AdvertDto>>(filterredList);
                 return result;
             }
@@ -233,10 +233,10 @@ namespace AutoMarket.BLL.Services
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<List<AdvertDto>> GetByModelAsync(string name)
+        public async Task<List<AdvertDto>> GetByModelAsync(int id)
         {
             var list = await _uow.AdvertRepository.GetAsync();
-            var filterredList = list.Where(x => x.Model.Name == name).ToList();
+            var filterredList = list.Where(x => x.Model.Id == id).ToList();
             var result = _mapper.Map<List<AdvertDto>>(filterredList);
             return result;
         }
@@ -247,7 +247,7 @@ namespace AutoMarket.BLL.Services
         /// <param name="priceFrom"></param>
         /// <param name="till"></param>
         /// <returns></returns>
-        public async Task<List<AdvertDto>> GetByPriceAsync(decimal priceFrom, int till)
+        public async Task<List<AdvertDto>> GetByPriceAsync(decimal priceFrom, decimal till)
         {
             var list = await _uow.AdvertRepository.GetAsync();
             var filterredList = list.Where(x => x.Price >= priceFrom && x.Price <= till).ToList();
